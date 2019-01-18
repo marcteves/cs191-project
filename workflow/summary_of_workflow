@@ -39,8 +39,10 @@ git add <files>
 git commit
 
 # Push when you feel that you're done
-# There's no need to add -u switch
+# There's no need to add -u switch anymore since you already set-up the
+# remote branch
 git push
 
 ### DOING THE PULL REQUEST ###
 # See the video in the workflow/ folder
+# BASE: <testing_branch> <- COMPARE: <feature_branch>
