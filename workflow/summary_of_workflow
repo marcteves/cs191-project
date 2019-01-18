@@ -44,5 +44,6 @@ git commit
 git push
 
 ### DOING THE PULL REQUEST ###
-# See the video in the workflow/ folder
+# Make sure to do this from your own github.com repository
+# See the video in the workflow/ folder for details
 # BASE: <testing_branch> <- COMPARE: <feature_branch>
