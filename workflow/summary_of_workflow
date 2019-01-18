@@ -12,19 +12,15 @@ git branch <feature_branch>
 # Move HEAD to that branch
 git checkout <feature_branch>
 
-# Set this branch's upstream to origin, so you can push any changes to your
-# forked remote github repo
-git branch --set-upstream-to=origin
-# or alternatively
-git branch -u origin
-
 # Now you can do some work
 git add <files>
 git commit
 
 # Push to upstream when you're ready to make the pull request or you want to
 # save your work remotely
-git push
+# This also creates a remote equivalent of <feature_branch> on the github
+# repository.
+git push -u origin <feature_branch>
 
 # You can now do the pull request on github.com
 
@@ -43,6 +39,7 @@ git add <files>
 git commit
 
 # Push when you feel that you're done
+# There's no need to add -u switch
 git push
 
 ### DOING THE PULL REQUEST ###
