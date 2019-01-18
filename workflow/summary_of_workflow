@@ -1,0 +1,49 @@
+# Before working, make sure you're working on a copy of the repository you
+# forked from the original, and not the original repository itself.
+
+### STARTING FROM FORKED REPOSITORY: WORKING ON NEW FEATURE ###
+
+# Move HEAD to testing branch
+git checkout test
+
+# Create new branch starting at current HEAD
+git branch <feature_branch>
+
+# Move HEAD to that branch
+git checkout <feature_branch>
+
+# Set this branch's upstream to origin, so you can push any changes to your
+# forked remote github repo
+git branch --set-upstream-to=origin
+# or alternatively
+git branch -u origin
+
+# Now you can do some work
+git add <files>
+git commit
+
+# Push to upstream when you're ready to make the pull request or you want to
+# save your work remotely
+git push
+
+# You can now do the pull request on github.com
+
+### CONTINUING UNFINISHED FEATURE ###
+# If you did the above steps already, but didn't make it to pushing and
+# making the pull request, this is how you continue working.
+
+# Make sure you're working on the feature branch you've made
+git status
+
+# If not, move your HEAD to the feature branch
+git checkout <feature_branch>
+
+# Continue working as normal
+git add <files>
+git commit
+
+# Push when you feel that you're done
+git push
+
+### DOING THE PULL REQUEST ###
+# See the video in the workflow/ folder
