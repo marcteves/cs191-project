@@ -15,5 +15,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
 	test "login with valid info" do
 		access_login_page
+		post login_path params: { email: "test@test.com", password: "password"
+		}
+		assert_response :redirect
 	end
 end
