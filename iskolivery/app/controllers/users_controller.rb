@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
 		# get all requests not posted by and not accepted by user
 		# keep in mind null values
-		@available_requests = Assignment.where(fulfiller_id: nil).
-			or(Assignment.where.not(fulfiller_id: @user.id)).
-			where.not(requester_id: @user.id).includes(:requests)
+		@available_requests = Assignment.where(fulfiller_id: nil)
+			.or(Assignment.where.not(fulfiller_id: @user.id))
+			.where.not(requester_id: @user.id)
 	end
 
 	# render accepted requests page
