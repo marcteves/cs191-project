@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 	# render User homepage
 	def home
 		@user = current_user
+		
+		@new_request = Request.new
 
 		# get all requests not posted by and not accepted by user
 		# keep in mind null values
