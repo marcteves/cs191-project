@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 	  if user && user.authenticate(params[:password])
 		  # Log-in
 		  log_in user # find this in SessionsHelper
+		  redirect_to '/home'
 	  else
 		  # Invalid info
 		  # TODO: create error
@@ -15,6 +16,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+	  if logged_in?
+		  log_out user
+	  end
   end
 
 end
