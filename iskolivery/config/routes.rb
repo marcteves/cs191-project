@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 		'home',		to:	'users#home' # user homepage
-  get 		'my_requests' to: 'users#my_requests' # user accepted requests
+  get 		'home',			to:	'users#home' # user homepage
+  get 		'my_requests', 	to: 'users#my_requests' # user accepted requests
+  post		'accept',		to: 'users#accept_request' # accept a request
+
+  resources :requests
 
   get 		'login', 	to: 'sessions#new'
   post 		'login', 	to: 'sessions#create'
