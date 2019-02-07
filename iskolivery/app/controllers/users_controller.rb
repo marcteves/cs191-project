@@ -2,13 +2,14 @@ class UsersController < ApplicationController
 
 	# render User homepage
 	def home
-		user = @current_user 
+		@user = @current_user 
+
 
 		# get all requests not posted by and not accepted by user
 		# keep in mind null values
-		@available_requests = Requests.where(fulfiller: nil).
-			or(Requests.where.not(fulfiller: user.id)).
-			where.not(requester: user.id)
+		@available_requests = Assignments.where(fulfiller_id: nil).
+			or(Assignments.where.not(fulfiller_id: @user.id)).
+			where.not(requester_id: @user.id).includes(:requests)
 	end
 
 	# render accepted requests page
@@ -18,6 +19,16 @@ class UsersController < ApplicationController
 
 		# get all requests accepted by user
 		# in the future, edit this to filter out fulfilled (completed)
-		@accepted_requests = Requests.where(fulfiller: user.id)
+		@accepted_requests = user.accepted_requests
+	end
+
+	# accept a selected request in the homepage
+	def accept_request
+		user = @current_user
+
+		assignment = Assignment.find_by(request_id: params[:request_id])
+		user.accepteds << assignment
+
+		redirect_to 'home'
 	end
 end
