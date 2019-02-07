@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
 	has_one :assignment
+	belongs_to :location
 
 	validates :title, presence: true
 	validates :location_id, presence: true
