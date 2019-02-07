@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  requester: 1
+  fulfiller: 1
+  request: one
+
+two:
+  requester: 1
+  fulfiller: 1
+  request: two
