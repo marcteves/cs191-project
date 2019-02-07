@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190205021904) do
+ActiveRecord::Schema.define(version: 20190206131357) do
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "requester"
+    t.integer "fulfiller"
+    t.string "title"
+    t.integer "location"
+    t.datetime "deadline"
+    t.string "item_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
   end
 
 end
