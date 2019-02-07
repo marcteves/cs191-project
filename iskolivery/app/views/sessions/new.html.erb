@@ -48,23 +48,24 @@
 				<!--div class="content"-->
 					<h1 class = "ui centered aligned header">ISKOLIVERY</h1>
 					<h3 class = "ui centered aligned header"><i>Crowdsourced Courier Service</i></h3>
-					<form class="ui form"  >
+					<%= form_for(:session, url: login_path, html: {class: 'ui form'}) do |f| %>
 					    <div class="field">
-					        <label>Username or UP Mail</label>
-					        <input type="text" name="username" placeholder="Enter username">
+							<%= f.label :email, text='Username or UP Mail' %>
+							<%= f.email_field :email, html: {placeholder: 'Enter username'} %>
 					    </div>
 				        <div class="field">
-				  	      <label>Password</label>
-				          <input type="text" name="password" placeholder="Enter password">
+				  	      <%= f.label :password, text='Password' %>
+						  <%= f.password_field :password, html: {placeholder: 'Enter password'} %>
 				        </div>
 				        <div class = "ui centered aligned container">
+							<%= f.submit "Log in" %>
 					        <button class="ui green right labeled icon button">
 					        	<i class="right arrow icon"></i>
 					        	Log in
 					      	</button>
 				      	</div>
 				      	<a href = "#" style = "color: #000000">Create an account</a>
-					</form>
+					<% end %>
 				<!--/div-->
 			</div>
 			

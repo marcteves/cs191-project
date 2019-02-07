@@ -109,19 +109,9 @@
                                    </thead>
                               
                                    <tbody>
-                                        <tr>
-                                             <td class="single line"><a href="#">luzviminda</a></td>
-                                             <td class="center aligned">Palma Hall</td>
-                                             <td class="center aligned">P80.00</td>
-                                             <td>Print my thesis paper behind Shopping Center.</td>
-                                        </tr>
-                                 
-                                        <tr>
-                                             <td class="single line"><a href="#">juandelacruz</a></td>
-                                             <td class="center aligned">Melchor Hall</td>
-                                             <td class="center aligned">P100.00</td>
-                                             <td>Please get readings from Ate Jofel and photocopy three more copies.</td>
-                                        </tr>
+									   <% @available_requests.each do |request| %>
+										   <%= render partial: 'request', object: request %>
+										<% end %>
                                    </tbody>
 
                                    <tfoot>
