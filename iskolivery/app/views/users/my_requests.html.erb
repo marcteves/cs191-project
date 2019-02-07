@@ -1,0 +1,109 @@
+<!-- LICENSE -->
+<!-- This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019. -->
+<!-- Author: Bridget Legaspi -->
+
+
+<!-- CODE HISTORY -->
+
+
+<!-- INFORMATION -->
+<!-- File creation: February 2, 2019 -->
+<!-- Development group: Group 1 - Iskolivery -->
+<!-- Client group: None -->
+<!-- Purpose of the software: To create a crowdsourced courier service for the UP Community -->
+
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset= "utf-8">
+          <title>Accepted Requests</title>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+     
+          <style type="text/css">
+               body {
+                    background-color: #F6F6F6;
+               }
+               .ui.menu .item img.logo {
+                    margin-right: 1.5em;
+               }
+               .main.container {
+                    margin-top: 3em;
+               }
+               .wireframe {
+                    margin-top: 2em;
+               }
+               .ui.footer.segment {
+                    margin: 5em 0em 0em;
+                    padding: 5em 0em;
+               }
+          </style>
+     </head>
+     
+     <body>
+          <div class = "ui container">
+               <div class = "ui borderless fixed large menu" style = "background:#921517">
+                    <div class="ui container">
+                         <div class="header item" style="color:#FFFFFF">Iskolivery</div>
+                 
+                         <div class="ui simple dropdown item">
+                              <a style="color:#FFFFFF">Your Requests</a> 
+                              <i class="dropdown icon" style="color:#FFFFFF"></i>
+                              <div class="menu">
+                                   <a class="item" href="#">Link Item</a>
+                                   <div class = "ui button test">Yo</div>
+                                   <a class="item form">Link Item</a>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="right menu">
+                         <a class="item" style="color:#FFFFFF">Sign out</a>
+                    </div>
+               </div>
+
+               <br><br>
+               <h1>Accepted Requests</h1>          
+               
+               <div class = "container">
+                    <div class = "ui modal">
+                         <i class="close icon"></i>
+                         <div class = "header">Header</div>
+                         <div class = "content">Hello</div>
+                    </div>
+               </div>
+
+               <table class="ui compact celled definition table">
+                    <thead>
+                    <tr>
+                         <th>Status</th>
+                         <th>Requester</th>
+						 <th>Meet-up Place</th>
+                         <th>Bounty</th>
+                         <th>Details</th>
+                    </tr>
+                    </thead>
+                 
+                    <tbody>
+					   <% @accepted_requests.each do |request| %>
+						   <%= render partial: 'accepted_request', object: request, as: 'request' %>
+						<% end %>
+                    </tbody>
+                     
+                    <tfoot class="full-width">
+                         <tr>
+                              <th></th>
+                              <th colspan="4">
+                                   <div class="ui right floated small primary labeled icon button">
+                                        <i class="user icon"></i> Get More Requests
+                                   </div>
+                              
+                              <div class="ui small positive button">Submit</div>
+                              <div class="ui small  disabled button">Submit all</div>
+                              </th>
+                         </tr>
+                    </tfoot>
+               </table>
+
+               <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+          </div>
+     </body>
+</html>

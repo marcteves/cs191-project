@@ -29,23 +29,28 @@
           <div class = "ui borderless fixed large menu" style = "background:#921517">
                <div class="ui container">
                     <div class="header item" style="color:#FFFFFF">Iskolivery</div>
+					<div class="header item">
+						<%= link_to "Your Requests", my_requests_path, method:
+						:get, style: 'color: #FFFFFF' %>
+					</div>
             
+					<!--
                     <div class="ui simple dropdown item">
                          <a style="color:#FFFFFF">Your Requests</a> 
                          <i class="dropdown icon" style="color:#FFFFFF"></i>
                          <div class="menu">
                               <a class="item" href="#">Link Item</a>
-                              <div class = "ui button test">Yo</div>
+							  <div class = "ui button test">Yo</div>
                               <a class="item form">Link Item</a>
                          </div>
                     </div>
+					-->
                </div>
           
                <div class="right menu">
-                    <a class="item" style="color:#FFFFFF">Sign out</a>
+				   <%= link_to "Sign out", logout_path, method: :delete, style: 'color:#FFFFFF' %>
                </div>
           </div>
-        
             
           <br><br><br>
           
@@ -57,19 +62,22 @@
                                    <div class = "header">Request Form</div>
                                    <br>
                                    
+								   <%= form_for(@new_request, html: {class: 'ui form'}) do |f| %>
                                    <form class="ui form">
                                         <div class="field">
-                                             <label>Item 1:</label>
-                                             <input type="text" name="item1" placeholder="Describe item">
-                                        </div>
-                                        
-                                        <div class="field">
-                                             <label>Item 2:</label>
-                                             <input type="text" name="item2" placeholder="Describe item">
+											<%= f.label :title, text='Title' %>
+											<%= f.text_field :title %>
                                         </div>
 
                                         <div class="field">
-                                             <label>Meet-up Place</label>
+											<%= f.label :location_id, text='Meet-up Place' %>
+											<%= select_tag(:location_id, options_for_select([
+												['Palma Hall', 1],
+												['Melchor Hall', 2],
+												['Engineering Library', 3],
+												['College of Science Library', 4]
+											], 3)) %>
+										<!--
                                              <div class="ui simple dropdown item">
                                                   Choose location <i class="dropdown icon"></i>
                                                   <div class="menu">
@@ -77,16 +85,23 @@
                                                     <a class="item">Palma Hall</a>
                                                   </div>
                                              </div>
+													!-->
                                         </div>
                                         <hr>
 
                                         <div class="field">
-                                             <label>Special Instructions</label>
-                                             <input type="text" name="instructions" placeholder="If any">
+											<%= f.label :item_name, text='Special Instructions' %>
+											<%= f.text_field :item_name %>
+                                        </div>
+                                        <div class="field">
+											<%= f.label :bounty, text='Bounty' %>
+											<%= f.text_field :bounty %>
                                         </div>
                                         <br><hr>
-                                        <button class="ui primary button" type="submit">Send Request</button>
+											<%= f.submit 'Send Request' %>
+											<!--<button class="ui primary button" type="submit">Send Request</button>-->
                                    </form>
+							   <% end %>
                               </div>
                          </div>
                     </div>
@@ -105,23 +120,14 @@
                                              <th>Meet-up Place</th>
                                              <th>Bounty</th>
                                              <th>Details</th>
+                                             <th>Action</th>
                                         </tr>
                                    </thead>
                               
                                    <tbody>
-                                        <tr>
-                                             <td class="single line"><a href="#">luzviminda</a></td>
-                                             <td class="center aligned">Palma Hall</td>
-                                             <td class="center aligned">P80.00</td>
-                                             <td>Print my thesis paper behind Shopping Center.</td>
-                                        </tr>
-                                 
-                                        <tr>
-                                             <td class="single line"><a href="#">juandelacruz</a></td>
-                                             <td class="center aligned">Melchor Hall</td>
-                                             <td class="center aligned">P100.00</td>
-                                             <td>Please get readings from Ate Jofel and photocopy three more copies.</td>
-                                        </tr>
+									   <% @available_requests.each do |request| %>
+										   <%= render partial: 'request', object: request %>
+										<% end %>
                                    </tbody>
 
                                    <tfoot>
