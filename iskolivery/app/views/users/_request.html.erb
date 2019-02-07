@@ -3,4 +3,8 @@
 	<td class="center aligned"><%= request.request.location.name %></td>
 	<td class="center aligned"><%= request.request.bounty %></td>
 	<td><%= request.request.item_name %></td>
+	<td> <%= form_tag accept_path %>
+	<%= hidden_field_tag :request_id, request.request_id %>
+	<%= submit_tag 'Accept' %>
+	</td>
 </tr>

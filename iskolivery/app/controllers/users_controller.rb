@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
 		# get all requests accepted by user
 		# in the future, edit this to filter out fulfilled (completed)
-		@accepted_requests = user.accepted_requests
+		@accepted_requests = user.accepteds
 	end
 
 	# accept a selected request in the homepage
@@ -30,6 +30,6 @@ class UsersController < ApplicationController
 		assignment = Assignment.find_by(request_id: params[:request_id])
 		user.accepteds << assignment
 
-		redirect_to 'home'
+		redirect_back fallback_location: '/home'
 	end
 end

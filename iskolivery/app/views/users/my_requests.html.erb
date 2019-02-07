@@ -84,7 +84,7 @@
                  
                     <tbody>
 					   <% @accepted_requests.each do |request| %>
-						   <%= render partial: 'accepted_request', object: request %>
+						   <%= render partial: 'accepted_request', object: request, as: 'request' %>
 						<% end %>
                     </tbody>
                      
