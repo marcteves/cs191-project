@@ -1,3 +1,9 @@
 class Assignment < ApplicationRecord
-  belongs_to :request
+	belongs_to :requester, class_name: "User", foreign_key: "requester_id"
+	belongs_to :fulfiller, class_name: "User", foreign_key: "fulfiller_id"
+	belongs_to :request
+
+	# Only validate requester
+	# fulfiller can be null at creation time
+	validates :requester, presence: true
 end
