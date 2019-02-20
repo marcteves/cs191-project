@@ -42,7 +42,12 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
      <body>
           <div class = "ui borderless fixed large menu" style = "background:#921517">
                <div class="ui container">
-                    <div class="header item" style="color:#FFFFFF">Iskolivery</div>
+                    <!-- <div class="header item" style="color:#FFFFFF">Iskolivery</div> -->
+                    <div class="header item" style="color:#FFFFFF">
+                         <%= link_to "Iskolivery", home_path, method:
+                              :get, style: 'color: #FFFFFF' %>
+                    </div>
+
 					<div class="header item">
 						<%= link_to "Your Requests", my_requests_path, method:
 						:get, style: 'color: #FFFFFF' %>
@@ -139,9 +144,9 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
                                    </thead>
                               
                                    <tbody>
-									   <% @available_requests.each do |request| %>
-										   <%= render partial: 'request', object: request %>
-										<% end %>
+     							<% @available_requests.each do |request| %>
+     								<%= render partial: 'request', object: request %>
+     							<% end %>
                                    </tbody>
 
                                    <tfoot>

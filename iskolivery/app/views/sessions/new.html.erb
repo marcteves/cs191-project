@@ -65,6 +65,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				<!--div class="content"-->
 					<h1 class = "ui centered aligned header">ISKOLIVERY</h1>
 					<h3 class = "ui centered aligned header"><i>Crowdsourced Courier Service</i></h3>
+					<br>
 					<%= form_for(:session, url: login_path, html: {class: 'ui form'}) do |f| %>
 					    <div class="field">
 							<%= f.label :email, text='Username or UP Mail' %>
@@ -74,14 +75,14 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				  	      <%= f.label :password, text='Password' %>
 						  <%= f.password_field :password, html: {placeholder: 'Enter password'} %>
 				        </div>
+				        <br>
+				        <center>
 				        <div class = "ui centered aligned container">
-							<%= f.submit "Log in" %>
-					        <button class="ui green right labeled icon button">
-					        	<i class="right arrow icon"></i>
-					        	Log in
-					      	</button>
+					      	<button class="ui positive button" type="submit">Log In</button>
 				      	</div>
+				      	<br>
 				      	<a href = "#" style = "color: #000000">Create an account</a>
+				     	</center>
 					<% end %>
 				<!--/div-->
 			</div>

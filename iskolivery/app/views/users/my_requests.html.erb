@@ -43,8 +43,11 @@
           <div class = "ui container">
                <div class = "ui borderless fixed large menu" style = "background:#921517">
                     <div class="ui container">
-                         <div class="header item" style="color:#FFFFFF">Iskolivery</div>
-                 
+                         <!-- <div class="header item" style="color:#FFFFFF">Iskolivery</div> -->
+                    <div class="header item" style="color:#FFFFFF">
+                         <%= link_to "Iskolivery", home_path, method:
+                              :get, style: 'color: #FFFFFF' %>
+                    </div>                 
                          <div class="ui simple dropdown item">
                               <a style="color:#FFFFFF">Your Requests</a> 
                               <i class="dropdown icon" style="color:#FFFFFF"></i>
@@ -76,16 +79,16 @@
                     <tr>
                          <th>Status</th>
                          <th>Requester</th>
-						 <th>Meet-up Place</th>
+                         <th>Meet-up Place</th>
                          <th>Bounty</th>
                          <th>Details</th>
                     </tr>
                     </thead>
                  
                     <tbody>
-					   <% @accepted_requests.each do |request| %>
-						   <%= render partial: 'accepted_request', object: request, as: 'request' %>
-						<% end %>
+					<% @accepted_requests.each do |request| %>
+					     <%= render partial: 'accepted_request', object: request, as: 'request' %>
+					<% end %>
                     </tbody>
                      
                     <tfoot class="full-width">
