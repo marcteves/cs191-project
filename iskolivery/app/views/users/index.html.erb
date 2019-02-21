@@ -1,13 +1,13 @@
 <!-- LICENSE -->
 <!-- This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019. -->
-<!-- Author: Bridget Legaspi -->
+<!-- Author: Aleksei Fernandez -->
 
 
 <!-- CODE HISTORY -->
 
 
 <!-- INFORMATION -->
-<!-- File creation: February 2, 2019 -->
+<!-- File creation: February 21, 2019 -->
 <!-- Development group: Group 1 - Iskolivery -->
 <!-- Client group: None -->
 <!-- Purpose of the software: To create a crowdsourced courier service for the UP Community -->
@@ -73,7 +73,7 @@
                </div>
 
                <br><br>
-               <h1>Accepted Requests</h1>          
+               <h1>User Accounts</h1>          
                
                <div class = "container">
                     <div class = "ui modal">
@@ -86,20 +86,15 @@
                <table class="ui compact celled definition table">
                     <thead>
                     <tr>
-                         <th>Status</th>
-                         <th>Requester</th>
-						 <th>Meet-up Place</th>
-                         <th>Bounty</th>
-                         <th>Details</th>
+                         <th>Email</th>
                     </tr>
                     </thead>
                  
                     <tbody>
-					   <% @accepted_requests.each do |request| %>
-						   <%= render partial: 'accepted_request', object: request, as: 'request' %>
-						<% end %>
+					   
                     </tbody>
                      
+                    <!--
                     <tfoot class="full-width">
                          <tr>
                               <th></th>
@@ -113,6 +108,7 @@
                               </th>
                          </tr>
                     </tfoot>
+                    -->
                </table>
 
                <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
