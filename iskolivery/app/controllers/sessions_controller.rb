@@ -19,6 +19,10 @@
 # the UP Community
 class SessionsController < ApplicationController
   def new
+	  # prevent logged in user from having to log-in again
+	  if logged_in?
+		  redirect_to home_path
+	  end
   end
 
   def create
@@ -30,7 +34,7 @@ class SessionsController < ApplicationController
 	  else
 		  # Invalid info
 		  # TODO: create error
-		  redirect_to login_path
+		  render 'new'
 	  end
   end
 
