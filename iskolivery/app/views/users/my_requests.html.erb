@@ -4,7 +4,7 @@
 
 
 <!-- CODE HISTORY -->
-
+<!-- Modified by Bridget Legaspi on February 21. Get more requests link back to home -->
 
 <!-- INFORMATION -->
 <!-- File creation: February 2, 2019 -->
@@ -43,7 +43,9 @@
           <div class = "ui container">
                <div class = "ui borderless fixed large menu" style = "background:#921517">
                     <div class="ui container">
-                         <div class="header item" style="color:#FFFFFF">Iskolivery</div>
+                         <div class="header item" style="color:#FFFFFF">
+                              <%= link_to "Iskolivery", home_path, method: :get, style: 'color: #FFFFFF' %>
+                         </div>
                               <div class="header item">
                                    <%= link_to "Your Requests", my_requests_path, method:
                                    :get, style: 'color: #FFFFFF' %>
@@ -54,17 +56,6 @@
                                    :get, style: 'color: #FFFFFF' %>
                               </div>
                  
-                              <!--
-                         <div class="ui simple dropdown item">
-                              <a style="color:#FFFFFF">Your Requests</a> 
-                              <i class="dropdown icon" style="color:#FFFFFF"></i>
-                              <div class="menu">
-                                   <a class="item" href="#">Link Item</a>
-                                          <div class = "ui button test">Yo</div>
-                                   <a class="item form">Link Item</a>
-                              </div>
-                         </div>
-                              -->
                     </div>
                
                     <div class="right menu">
@@ -88,7 +79,7 @@
                     <tr>
                          <th>Status</th>
                          <th>Requester</th>
-						 <th>Meet-up Place</th>
+					<th>Meet-up Place</th>
                          <th>Bounty</th>
                          <th>Details</th>
                     </tr>
@@ -105,7 +96,9 @@
                               <th></th>
                               <th colspan="4">
                                    <div class="ui right floated small primary labeled icon button">
-                                        <i class="user icon"></i> Get More Requests
+                                        <i class="user icon"></i> 
+                                        <%= link_to "Get More Requests", home_path, method:
+                                   :get, style: 'color: #FFFFFF' %>
                                    </div>
                               
                               <div class="ui small positive button">Submit</div>
