@@ -4,7 +4,7 @@
 
 
 <!-- CODE HISTORY -->
-
+<!-- Modified by Bridget Legaspi on February 22. Added listing of emails -->
 
 <!-- INFORMATION -->
 <!-- File creation: February 21, 2019 -->
@@ -91,7 +91,11 @@
                     </thead>
                  
                     <tbody>
-					   
+				 <% @users.each do |user| %>
+                     <tr>
+                         <td><%= user.email %></td>
+                     </tr>
+                     <% end %>
                     </tbody>
                      
                     <!--
