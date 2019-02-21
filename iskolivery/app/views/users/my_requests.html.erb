@@ -4,7 +4,9 @@
 
 
 <!-- CODE HISTORY -->
-
+<!-- Feb 2: File creation -->
+<!-- Feb 4: Created the table, header from Aleksei -->
+<!-- Feb 19: Modified links -->
 
 <!-- INFORMATION -->
 <!-- File creation: February 2, 2019 -->
@@ -82,13 +84,14 @@
                          <th>Meet-up Place</th>
                          <th>Bounty</th>
                          <th>Details</th>
+                         <!-- <th>Action</th> -->
                     </tr>
                     </thead>
                  
                     <tbody>
 					<% @accepted_requests.each do |request| %>
 					     <%= render partial: 'accepted_request', object: request, as: 'request' %>
-					<% end %>
+ 					<% end %>
                     </tbody>
                      
                     <tfoot class="full-width">
@@ -96,9 +99,11 @@
                               <th></th>
                               <th colspan="4">
                                    <div class="ui right floated small primary labeled icon button">
-                                        <i class="user icon"></i> Get More Requests
+                                        <i class="user icon"></i> 
+                                        <!-- Get More Requests -->
+                                        <%= link_to "Get More Requests", home_path, method: :get, style: 'color: #FFFFFF' %>
                                    </div>
-                              
+
                               <div class="ui small positive button">Submit</div>
                               <div class="ui small  disabled button">Submit all</div>
                               </th>
