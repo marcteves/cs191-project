@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 		'/home',		to:	'users#home' # user homepage
   get 		'/my_requests', to: 'users#my_requests' # user accepted requests
   post		'/accept',		to: 'users#accept_request' # accept a request
+  get		'/users',		to:	'users#index' # view all users as admin
 
   resources :requests
 
