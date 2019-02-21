@@ -1,17 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  requester: 1
-  fulfiller: 1
   title: MyString
   location: 1
   deadline: 2019-02-06 21:13:57
   item_name: MyString
-
-two:
-  requester: 1
-  fulfiller: 1
-  title: MyString
-  location: 1
-  deadline: 2019-02-06 21:13:57
-  item_name: MyString
+  bounty: 1.00

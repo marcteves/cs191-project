@@ -61,11 +61,16 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
           <br><br><br><br><br>
 
 		<div class = "ui middle centered aligned container">
+			<h1 class = "ui centered aligned header" style="color:#FFFFFF; margin-bottom:-20px">ISKOLIVERY</h1>
+			<h3 class = "ui centered aligned header" style="color:#FFFFFF"><i>Crowdsourced Courier Service</i></h3>
 			<div class="ui segment">
 				<!--div class="content"-->
-					<h1 class = "ui centered aligned header">ISKOLIVERY</h1>
-					<h3 class = "ui centered aligned header"><i>Crowdsourced Courier Service</i></h3>
-					<br>
+					<center>
+			            <div class = "image">   
+			  			   <img src = "isko.png" style = "width:100px;height:100px">
+			  			</div>
+			    </center>
+
 					<%= form_for(:session, url: login_path, html: {class: 'ui form'}) do |f| %>
 					    <div class="field">
 							<%= f.label :email, text='Username or UP Mail' %>

@@ -52,6 +52,11 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 						<%= link_to "Your Requests", my_requests_path, method:
 						:get, style: 'color: #FFFFFF' %>
 					</div>
+
+                         <div class="header item">
+                              <%= link_to "View Users", users_path, method:
+                              :get, style: 'color: #FFFFFF' %>
+                         </div>
             
 					<!--
                     <div class="ui simple dropdown item">
@@ -76,56 +81,27 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
           <div class="ui container">
                <div class = "ui grid">
                     <div class="four wide column">
-                         <div class = "ui card">
-                              <div class = "content">
-                                   <div class = "header">Request Form</div>
-                                   <br>
+                         <div class = "row">
+                              <div class="ui card">
+                                   <div class="content">
+                                        <img class="ui avatar bordered circular image" src="yukataw.png" style="width:50px;height:50px;">
+                                        <span>
+                                             <h2 style="margin-bottom:0px">Username</h2>
+                                             <div class="meta">
+                                             College of Engineering
+                                            </div>
+                                        </span>        
+                                        <hr>                
+                                        <div class="segment">
+                                             <h4>Your Active Requests</h4>
+                                        </div>
+                                   </div>
                                    
-								   <%= form_for(@new_request, html: {class: 'ui form'}) do |f| %>
-                                   <form class="ui form">
-                                        <div class="field">
-											<%= f.label :title, text='Title' %>
-											<%= f.text_field :title %>
-                                        </div>
-
-                                        <div class="field">
-											<%= f.label :location_id, text='Meet-up Place' %>
-											<%= select_tag(:location_id, options_for_select([
-												['Palma Hall', 1],
-												['Melchor Hall', 2],
-												['Engineering Library', 3],
-												['College of Science Library', 4]
-											], 3)) %>
-										<!--
-                                             <div class="ui simple dropdown item">
-                                                  Choose location <i class="dropdown icon"></i>
-                                                  <div class="menu">
-                                                    <a class="item">Engineering Library 2</a>
-                                                    <a class="item">Palma Hall</a>
-                                                  </div>
-                                             </div>
-													!-->
-                                        </div>
-                                        <hr>
-
-                                        <div class="field">
-											<%= f.label :item_name, text='Special Instructions' %>
-											<%= f.text_field :item_name %>
-                                        </div>
-                                        <div class="field">
-											<%= f.label :bounty, text='Bounty' %>
-											<%= f.text_field :bounty %>
-                                        </div>
-                                        <br><hr>
-											<%= f.submit 'Send Request' %>
-											<!--<button class="ui primary button" type="submit">Send Request</button>-->
-                                   </form>
-							   <% end %>
                               </div>
                          </div>
                     </div>
                
-                    <div class = "twelve wide column">
+                    <div class = "eight wide column">
                          <div class="ui segment">
                               <div class="header">
                                    <h2>Requests Pool</h2>
@@ -164,6 +140,56 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
                                         </tr>
                                    </tfoot>
                              </table>
+                         </div>
+                    </div>
+
+                    <div class="four wide column">
+                         <div class = "ui card">
+                              <div class = "content">
+                                   <div class = "header">Request Form</div>
+                                   <br>
+                                   
+                                           <%= form_for(@new_request, html: {class: 'ui form'}) do |f| %>
+                                   <form class="ui form">
+                                        <div class="field">
+                                                       <%= f.label :title, text='Title' %>
+                                                       <%= f.text_field :title %>
+                                        </div>
+
+                                        <div class="field">
+                                                       <%= f.label :location_id, text='Meet-up Place' %>
+                                                       <%= select_tag(:location_id, options_for_select([
+                                                            ['Palma Hall', 1],
+                                                            ['Melchor Hall', 2],
+                                                            ['Engineering Library', 3],
+                                                            ['College of Science Library', 4]
+                                                       ], 3)) %>
+                                                  <!--
+                                             <div class="ui simple dropdown item">
+                                                  Choose location <i class="dropdown icon"></i>
+                                                  <div class="menu">
+                                                    <a class="item">Engineering Library 2</a>
+                                                    <a class="item">Palma Hall</a>
+                                                  </div>
+                                             </div>
+                                                                 !-->
+                                        </div>
+                                        <hr>
+
+                                        <div class="field">
+                                                       <%= f.label :item_name, text='Special Instructions' %>
+                                                       <%= f.text_field :item_name %>
+                                        </div>
+                                        <div class="field">
+                                                       <%= f.label :bounty, text='Bounty' %>
+                                                       <%= f.text_field :bounty %>
+                                        </div>
+                                        <br><hr>
+                                                       <%= f.submit 'Send Request' %>
+                                                       <!--<button class="ui primary button" type="submit">Send Request</button>-->
+                                   </form>
+                                      <% end %>
+                              </div>
                          </div>
                     </div>
                </div>

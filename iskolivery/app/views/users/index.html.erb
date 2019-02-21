@@ -4,12 +4,10 @@
 
 
 <!-- CODE HISTORY -->
-<!-- Feb 2: File creation -->
-<!-- Feb 4: Created the table, header from Aleksei -->
-<!-- Feb 19: Modified links -->
+
 
 <!-- INFORMATION -->
-<!-- File creation: February 2, 2019 -->
+<!-- File creation: February 21, 2019 -->
 <!-- Development group: Group 1 - Iskolivery -->
 <!-- Client group: None -->
 <!-- Purpose of the software: To create a crowdsourced courier service for the UP Community -->
@@ -45,25 +43,18 @@
           <div class = "ui container">
                <div class = "ui borderless fixed large menu" style = "background:#921517">
                     <div class="ui container">
+                         <div class="header item" style="color:#FFFFFF">Iskolivery</div>
+                              <div class="header item">
+                                   <%= link_to "Your Requests", my_requests_path, method:
+                                   :get, style: 'color: #FFFFFF' %>
+                              </div>
 
-                         <!-- <div class="header item" style="color:#FFFFFF">Iskolivery</div> -->
-                         <div class="header item" style="color:#FFFFFF">
-                              <%= link_to "Iskolivery", home_path, method:
-                              :get, style: 'color: #FFFFFF' %>
-                         </div>                 
-
-                         <div class="header item">
-                               <%= link_to "Your Requests", my_requests_path, method:
-                               :get, style: 'color: #FFFFFF' %>
-                          </div>
-
-                          <div class="header item">
-                                <%= link_to "View Users", users_path, method:
-                                :get, style: 'color: #FFFFFF' %>
-                          </div>
+                              <div class="header item">
+                                   <%= link_to "View Users", users_path, method:
+                                   :get, style: 'color: #FFFFFF' %>
+                              </div>
                  
                               <!--
-
                          <div class="ui simple dropdown item">
                               <a style="color:#FFFFFF">Your Requests</a> 
                               <i class="dropdown icon" style="color:#FFFFFF"></i>
@@ -82,7 +73,7 @@
                </div>
 
                <br><br>
-               <h1>Accepted Requests</h1>          
+               <h1>User Accounts</h1>          
                
                <div class = "container">
                     <div class = "ui modal">
@@ -95,36 +86,29 @@
                <table class="ui compact celled definition table">
                     <thead>
                     <tr>
-                         <th>Status</th>
-                         <th>Requester</th>
-                         <th>Meet-up Place</th>
-                         <th>Bounty</th>
-                         <th>Details</th>
-                         <!-- <th>Action</th> -->
+                         <th>Email</th>
                     </tr>
                     </thead>
                  
                     <tbody>
-					<% @accepted_requests.each do |request| %>
-					     <%= render partial: 'accepted_request', object: request, as: 'request' %>
- 					<% end %>
+					   
                     </tbody>
                      
+                    <!--
                     <tfoot class="full-width">
                          <tr>
                               <th></th>
                               <th colspan="4">
                                    <div class="ui right floated small primary labeled icon button">
-                                        <i class="user icon"></i> 
-                                        <!-- Get More Requests -->
-                                        <%= link_to "Get More Requests", home_path, method: :get, style: 'color: #FFFFFF' %>
+                                        <i class="user icon"></i> Get More Requests
                                    </div>
-
+                              
                               <div class="ui small positive button">Submit</div>
                               <div class="ui small  disabled button">Submit all</div>
                               </th>
                          </tr>
                     </tfoot>
+                    -->
                </table>
 
                <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
