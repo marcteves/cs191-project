@@ -61,4 +61,14 @@ class UsersController < ApplicationController
 
 		redirect_back fallback_location: '/home'
 	end
+
+	# cancel selected request in the my accepted requests page
+	def cancel_request
+		user = current_user
+
+		assignment = Assignment.find_by(request_id: params[:request_id])
+		user.accepteds.delete(assignment)
+
+		redirect_back fallback_location: '/home'
+	end
 end
