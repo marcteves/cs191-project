@@ -19,6 +19,16 @@
 # the UP Community
 class UsersController < ApplicationController
 
+	# only give @users if admin, otherwise give 403 Forbidden
+	def index
+
+		if !current_user.admin?
+			render status: :forbidden
+		end
+
+		@users = User.all
+	end
+
 	# render User homepage
 	def home
 		@user = current_user

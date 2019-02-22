@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get 		'/my_requests', to: 'users#my_requests' # user accepted requests
   post		'/accept',		to: 'users#accept_request' # accept a request
   post		'/cancel',		to: 'users#cancel_request' # cancel a request
+  get		'/users',		to:	'users#index' # view all users as admin
+
 
   resources :requests
 
