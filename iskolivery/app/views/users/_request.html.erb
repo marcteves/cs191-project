@@ -17,8 +17,9 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	<td class="center aligned"><%= request.request.location.name %></td>
 	<td class="center aligned"><%= request.request.bounty %></td>
 	<td><%= request.request.item_name %></td>
-	<td> <%= form_tag accept_path %>
+	<td> <%= form_tag accept_path do -%>
 	<%= hidden_field_tag :request_id, request.request_id %>
 	<%= submit_tag 'Accept' %>
+	<% end -%>
 	</td>
 </tr>
