@@ -92,6 +92,20 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 							
 						</div>
 					</div>
+					<br>
+					<div class = "row">
+						<div class="ui card">
+							<div class="content">
+								<div class="header">
+									Accepted Requests
+								</div>
+								<hr>
+								<% @accepted_requests.each do |request| %>
+								   <%= render partial: 'accepted_request', object: request, as: 'request' %>
+								<% end %>
+							</div>
+						</div>
+					</div>
 				</div>
 			
 				<div class = "eight wide column">
@@ -100,7 +114,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 							<h2>Requests Pool</h2>
 						</div>
 						<!-- <div class = "ui items"></div> -->
-
+						<!--
 						<table class="ui celled padded table">
 							<thead>
 								<tr>
@@ -112,10 +126,11 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 								</tr>
 							</thead>
 						
-							<tbody>
+							<tbody>-->
 								<% @available_requests.each do |request| %>
-										   <%= render partial: 'request', object: request %>
-										<% end %>
+								   <%= render partial: 'request', object: request %>
+								<% end %>
+						<!--
 							</tbody>
 
 							<tfoot>
@@ -132,6 +147,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 								</tr>
 							</tfoot>
 					    </table>
+						-->
 					</div>
 				</div>
 

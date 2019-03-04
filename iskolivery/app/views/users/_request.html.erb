@@ -12,6 +12,30 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 <!-- Development group: Group 1 - Iskolivery -->
 <!-- Client group: None -->
 <!-- Purpose of the software: To create a crowdsourced courier service for the UP Community -->
+<div class="ui card fluid">
+	<div class="content">
+		<div class="header">
+			<a href="#"><%= request.requester.email %></a>
+			<div class = "right floated meta" style="color:#44CC44">
+				<%= request.request.bounty %>
+			</div>
+		</div>
+		<div class="description">
+			<p><%= request.request.item_name %></p>
+			<p><%= request.request.location.name %></p>
+		</div>
+	</div>
+	<div class="ui segment">
+		<div class="ui tiny right floated inverted green button">
+			<%= form_tag accept_path do -%>
+			<%= hidden_field_tag :request_id, request.request_id %>
+			<%= submit_tag 'Accept' %>
+			<% end -%>
+		</div>
+	</div>
+</div>
+
+<!--
 <tr>
 	<td class="single line"> <a href="#"><%= request.requester.email %></a></td>
 	<td class="center aligned"><%= request.request.location.name %></td>
@@ -23,3 +47,4 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	<% end -%>
 	</td>
 </tr>
+-->

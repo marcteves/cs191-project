@@ -12,6 +12,33 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 <!-- Development group: Group 1 - Iskolivery -->
 <!-- Client group: None -->
 <!-- Purpose of the software: To create a crowdsourced courier service for the UP Community -->
+
+<div class="ui card">
+	<div class="content">
+		<div class="header">
+			<img class="ui avatar bordered circular image" src="yukataw.png" style="width:25px;height:25px;">
+			<span>
+				<a href="#" style="color:#000000">
+					<h3 style="margin-bottom:0px">
+						<%= request.requester.email %>
+					</h3>
+				</a>
+			</span>						
+		</div>
+		<div class="description">
+			<p style:"margin-bottom:-10px"><%= request.request.item_name %></p>
+			<p><%= request.request.location.name %></p>
+		</div>
+		<button class="ui right floated mini inverted red button">
+			<%= form_tag cancel_path do -%>
+			<%= hidden_field_tag :request_id, request.request_id %>
+			<%= submit_tag 'Cancel' %>
+			<% end -%>	
+		</button>
+	</div>
+</div>
+
+<!--
 <tr>
   <td class="collapsing">
 	   <div class="ui fitted slider checkbox">
@@ -27,3 +54,4 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	<%= submit_tag 'Cancel' %>
 	<% end -%>	
 </tr>
+-->
