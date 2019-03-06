@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post		'/accept',		to: 'users#accept_request' # accept a request
   post		'/cancel',		to: 'users#cancel_request' # cancel a request
   get		'/users',		to:	'users#index' # view all users as admin
+  post		'/verify',		to: 'users#verify' # toggle verify status
 
 
   resources :requests

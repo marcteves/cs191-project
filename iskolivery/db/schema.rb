@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20190306184445) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
-    t.boolean "verified"
+    t.boolean "verified", default: false, null: false
   end
 
 end

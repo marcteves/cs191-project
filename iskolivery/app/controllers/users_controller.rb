@@ -21,12 +21,9 @@ class UsersController < ApplicationController
 
 	# only give @users if admin, otherwise give 403 Forbidden
 	def index
-
-		if !current_user.admin?
-			render status: :forbidden
+		if user = check_admin
+			@users = User.all
 		end
-
-		@users = User.all
 	end
 
 	# render User homepage
@@ -71,4 +68,23 @@ class UsersController < ApplicationController
 
 		redirect_back fallback_location: '/home'
 	end
+
+	# toggle verify status of user
+	def verify
+		if user = check_admin
+			target_user = User.find_by(id: params[:user_id])
+			target_user.toggle!(:verified)
+		end
+	end
+
+	private
+		def check_admin
+			user = current_user
+
+			if !current_user.admin?
+				redirect_to '/public/422.html', status: 422
+			end
+
+			return user
+		end
 end
