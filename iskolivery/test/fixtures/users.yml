@@ -8,3 +8,8 @@ two:
   email: two@test.com
   admin: true
   password_digest: <%= User.digest('password') %>
+
+three:
+  email: three@test.com
+  verified: false
+  password_digest: <%= User.digest('password') %>
