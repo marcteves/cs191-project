@@ -43,11 +43,12 @@ default_pass = 'password'
 userA_email = 'testA@test.com'
 userB_email = 'testB@test.com'
 
-userA = User.create(email: userA_email, password: default_pass,
-				password_confirmation: default_pass)
+userA = User.create(name: 'Tess Isko', email: userA_email, password:
+					default_pass, password_confirmation: default_pass)
 
-userB = User.create(email: userB_email, password: default_pass,
-				password_confirmation: default_pass, admin: true)
+userB = User.create(name: 'Tasyo Tejero', email: userB_email, password:
+					default_pass, password_confirmation: default_pass, admin:
+					true)
 
 location = Location.find_by(name: 'Palma Hall')
 req1 = Request.create(title: 'chinese new year',

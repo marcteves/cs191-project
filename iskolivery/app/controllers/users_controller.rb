@@ -21,12 +21,11 @@ class UsersController < ApplicationController
 
 	# only give @users if admin, otherwise give 403 Forbidden
 	def index
-
-		if !current_user.admin?
-			render status: :forbidden
+		if user = check_admin
+			@users = User.all
+		else
+			redirect_to '/public/422.html', status: 422
 		end
-
-		@users = User.all
 	end
 
 	# render User homepage
@@ -73,4 +72,75 @@ class UsersController < ApplicationController
 
 		redirect_back fallback_location: '/home'
 	end
+
+	# toggle verify status of user
+	def verify
+		if user = check_admin
+			target_user = User.find_by(id: params[:user_id])
+			target_user.toggle!(:verified)
+		end
+	end
+
+	# view user by id
+	def view
+		request_user(params[:id])
+	end
+
+	# view user and show edit form
+	def view_edit
+		request_user(params[:id])
+		target_user = @user
+		if current_user.id != target_user.id && @admin == false
+			redirect_to '/public/422.html', status: 422
+			return false
+		end
+	end
+
+	# user edit
+	def edit
+		request_user(params[:id])
+		target_user = @user
+		logger.info @user
+		if current_user.id != target_user.id && @admin == false
+			redirect_to '/public/422.html', status: 422
+			return false
+		end
+
+		request_params.each do |key, value|
+			target_user[key] = value
+		end
+		target_user.save
+	end
+
+	private
+		def check_admin
+			user = current_user
+
+			if !current_user.admin?
+				return false
+			end
+
+			return user
+		end
+
+		# allow access to user if it's the same user, or if it's an admin
+		# set @admin to true if user requesting access is an admin
+		# return false when user should not have access / user not found
+		def request_user(id)
+			@admin = false
+			if check_admin
+				@admin = true
+			end
+
+			begin
+				@user = User.find(params[:id])
+			rescue ActiveRecord::RecordNotFound
+				redirect_to '/public/404.html', status: 404
+				return false
+			end
+		end
+
+		def request_params
+			params.require(:user).permit(:name)
+		end
 end
