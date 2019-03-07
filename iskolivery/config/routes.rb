@@ -23,9 +23,11 @@ Rails.application.routes.draw do
   get 		'/my_requests', to: 'users#my_requests' # user accepted requests
   post		'/accept',		to: 'users#accept_request' # accept a request
   post		'/cancel',		to: 'users#cancel_request' # cancel a request
-  get		'/users/:id',	to: 'users#view',	as: "user_view" # view user
+  get		'/user/:id',	to: 'users#view',	as: "user_view" # view user
   get		'/users',		to:	'users#index' # view all users as admin
   post		'/verify',		to: 'users#verify' # toggle verify status
+  get		'/user/:id/edit',	to:	'users#view_edit', as: 'user_view_edit' # view form for editing
+  patch		'/user/:id',	to: 'users#edit', as: 'user_edit' # edit user with params
 
 
   resources :requests
