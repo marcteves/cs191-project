@@ -15,6 +15,11 @@
 	  body {
 	    background-color: #EFEFEF;
 	  }
+
+	  td:hover {
+	    cursor: pointer;
+		}
+
 	  .ui.menu .item img.logo {
 	    margin-right: 1.5em;
 	  }
@@ -250,7 +255,7 @@
 				</div>
 				<div class = "row">
 
-               		<table class="ui compact celled definition table">
+               		<table class="ui compact celled definition table" id = "userTable">
                     	<thead>
                     		<tr>
                          		<th>Email</th>
@@ -296,6 +301,11 @@
 		        	$('#rootsmodal').modal('show');    
 		    	});
 		    });
+
+		    $('#userTable').each(function() {
+			    var cellText = $(this).html();
+			    cellText.print();  
+			});
 		</script>
 	</body>
 </html>

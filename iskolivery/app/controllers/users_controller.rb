@@ -40,6 +40,8 @@ class UsersController < ApplicationController
 		@available_requests = Assignment.where(fulfiller_id: nil)
 			.or(Assignment.where.not(fulfiller_id: @user.id))
 			.where.not(requester_id: @user.id)
+
+		@accepted_requests = @user.accepteds
 	end
 
 	# render accepted requests page
