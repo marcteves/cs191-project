@@ -73,12 +73,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		post login_path, params: { session: { email: regular_user.email,
 											 password: 'password' } }
 
-		get user_view_edit_path
+		get user_view_edit_path(regular_user.id)
 		assert_response :success
 
-		assert_changes 'User.find_by(id: unverified_user.id).name',
+		assert_changes 'User.find_by(id: regular_user.id).name',
 			from: 'One', to: 'Juan Dela Cruz' do
-			put user_edit_path, params: { user: { name: "Juan Dela Cruz" } }
+			patch user_edit_path(regular_user.id),
+				params: { user: { name: "Juan Dela Cruz" } }
 			assert_response :success
 		end
 
