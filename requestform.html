@@ -3,11 +3,23 @@
 	<head>
 		<meta charset= "utf-8">
 		<title>Request Form</title>
+
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.min.css">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.min.js"></script>
+
 	<style type="text/css">
 	  body {
 	    background-color: #EFEFEF;
 	  }
+
+	  td:hover {
+	    cursor: pointer;
+		}
+
 	  .ui.menu .item img.logo {
 	    margin-right: 1.5em;
 	  }
@@ -104,7 +116,7 @@
 													<h3 style="margin-bottom:0px">Username</h3>
 												</a>
 											</span>	
-											
+											<i class = "right red minus circle icon"></i>
 										</div>
 										<div class="description">
 											<p style:"margin-bottom:-10px">Do this for me</p>
@@ -241,9 +253,70 @@
 						</div>
 					</div>
 				</div>
+				<div class = "row">
+
+               		<table class="ui compact celled definition table" id = "userTable">
+                    	<thead>
+                    		<tr>
+                         		<th>Email</th>
+                    		</tr>
+                   		</thead>
+                 
+                    	<tbody>
+                     		<tr>
+                         		<td class = "hey">testemail</td>
+                         		<td class = "hey">testemail2</td>
+                         		<td class = "hey">testemail3</td>
+                     		</tr>
+                    </tbody>
+                     
+                    </table>
+				</div>
 			</div>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 		</div>
-		
+
+		<div class = "ui modal" id="rootsmodal">
+			<i class="close icon"></i>
+			<div class="header" style = "background-color:#921517">
+				<h2>View User</h2>
+			</div>
+			<div class="content">
+				<h3>Organizer:</h3>
+				<p id ="MyEdit">UP Economics Society</p>
+				<h3>Date:</h3>
+				<p>Fevrier 14, 2019, Jeudi</p>
+				<h3>Description:</h3>
+				<p>A UP Fair event starring Franco, Rivermaya, and Imago!</p>
+			</div>
+			<div class="actions">
+				<button class="ui green approve button" id = "rootsbuy">
+					80.00 PHP
+				</button>
+				<button class="ui red cancel button">
+					Cancel
+				</button>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+		    	$('.hey').click(function(){
+		    		var user = $(this).html();
+					document.getElementById("MyEdit").innerHTML = user;
+		        	$('#rootsmodal').modal('show');    
+		    	});
+		    });
+
+		    $('test').each(function(){
+			  if(this.id){
+			  	var user = $("#test").html();
+			    this.id = this.id+user;
+			  }
+			});
+
+		    $('#userTable').each(function() {
+			    var cellText = $(this).html();
+			    cellText.print();  
+			});
+		</script>
 	</body>
 </html>
