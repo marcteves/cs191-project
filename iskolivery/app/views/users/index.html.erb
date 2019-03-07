@@ -54,19 +54,20 @@
                <h1>User Accounts</h1>          
                
 
-               <table class="ui sortable striped compact table">
+               <table class="ui striped compact table">
                     <thead>
                     <tr>
-                         <th class="sorted ascending">Email</th>
+                         <th class="">Name</th>
+                         <th class="">Email</th>
                          <th class="">Verified</th>
+                         <th class="">Action</th>
                     </tr>
                     </thead>
                  
                     <tbody>
 				 <% @users.each do |user| %>
                      <tr>
-                         <td class = "viewUserRow"><%= user.email %></td>
-                         <td><%= user.admin %></td> 
+
                      </tr>
                      <% end %>
                     </tbody>
