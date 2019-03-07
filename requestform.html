@@ -116,7 +116,7 @@
 													<h3 style="margin-bottom:0px">Username</h3>
 												</a>
 											</span>	
-											
+											<i class = "right red minus circle icon"></i>
 										</div>
 										<div class="description">
 											<p style:"margin-bottom:-10px">Do this for me</p>
@@ -264,7 +264,9 @@
                  
                     	<tbody>
                      		<tr>
-                         		<td id = "test"><div class="button">testemail</div></td>
+                         		<td class = "hey">testemail</td>
+                         		<td class = "hey">testemail2</td>
+                         		<td class = "hey">testemail3</td>
                      		</tr>
                     </tbody>
                      
@@ -280,7 +282,7 @@
 			</div>
 			<div class="content">
 				<h3>Organizer:</h3>
-				<p>UP Economics Society</p>
+				<p id ="MyEdit">UP Economics Society</p>
 				<h3>Date:</h3>
 				<p>Fevrier 14, 2019, Jeudi</p>
 				<h3>Description:</h3>
@@ -297,10 +299,19 @@
 		</div>
 		<script>
 			$(document).ready(function(){
-		    	$('#test').click(function(){
+		    	$('.hey').click(function(){
+		    		var user = $(this).html();
+					document.getElementById("MyEdit").innerHTML = user;
 		        	$('#rootsmodal').modal('show');    
 		    	});
 		    });
+
+		    $('test').each(function(){
+			  if(this.id){
+			  	var user = $("#test").html();
+			    this.id = this.id+user;
+			  }
+			});
 
 		    $('#userTable').each(function() {
 			    var cellText = $(this).html();

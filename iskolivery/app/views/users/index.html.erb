@@ -65,7 +65,7 @@
                     <tbody>
 				 <% @users.each do |user| %>
                      <tr>
-                         <td id = "viewUser"><%= user.email %></td>
+                         <td class = "viewUserRow"><%= user.email %></td>
                          <td><%= user.admin %></td> 
                      </tr>
                      <% end %>
@@ -94,13 +94,15 @@
                     </div>
                     <div class="content">
                          <h3>Email:</h3>
-                         <p></p>
+                         <p id = "email"></p>
                     </div>
                </div>
 
                <script>
                $(document).ready(function(){
-                    $('#viewUser').click(function(){
+                    $('.viewUserRow').click(function(){
+                         var user = $(this).html();
+                         document.getElementById("email").innerHTML = user;
                          $('#viewUserModal').modal('show');    
                     });
                });
