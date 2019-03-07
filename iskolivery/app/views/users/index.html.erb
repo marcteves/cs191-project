@@ -66,6 +66,18 @@
                  
                     <tbody>
 				 <% @users.each do |user| %>
+                         <td class = "viewUserRow"><%= user.name %></td>
+                         <td class = "viewUserRow"><%= user.email %></td>
+                         <td class = ""><%= user.verified %></td>
+                         <td class = ""><%= form_tag verify_path do -%>
+                               <%= hidden_field_tag :user_id, user.id %>
+                                   <%#= submit_tag 'Verify' %>
+
+                                   <button class="ui mini toggle button" type="submit">Verify</button>
+                         <% end -%>
+                         </td>
+                         <!-- <td class = "viewUserRow"><%= user.email %></td> -->
+                         <!-- <td><%= user.admin %></td>  -->
                      <tr>
 
                      </tr>
@@ -91,7 +103,7 @@
                <div class = "ui modal" id="viewUserModal">
                     <i class="close icon"></i>
                     <div class="header" style = "background-color:#921517">
-                         <h2 style = "color:#FFFFFF">View User</h2>
+                         <h2 style = "color:#FFFFFF">User Account Details</h2>
                     </div>
                     <div class="content">
                          <h3>Email:</h3>
