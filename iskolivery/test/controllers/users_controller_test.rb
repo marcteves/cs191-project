@@ -33,4 +33,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		assert_response 422
 	end
 
+	# both tests are identical for now, but some elements should be hidden
+	# for regular user view
+	test "admin view other user" do
+		admin_user = users(:two)
+		regular_user = users(:one)
+
+		post login_path, params: { session: { email: admin_user.email,
+											 password: 'password' } }
+
+		get "/users/#{regular_user.id}"
+		assert_response :success
+	end
+
+	test "regular user view other user" do
+		regular_user_A = users(:one)
+		regular_user_B = users(:three)
+
+		post login_path, params: { session: { email: regular_user_A.email,
+											 password: 'password' } }
+
+		get "/users/#{regular_user_B.id}"
+		assert_response :success
+	end
+
+
 end
