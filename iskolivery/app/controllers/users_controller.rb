@@ -23,6 +23,8 @@ class UsersController < ApplicationController
 	def index
 		if user = check_admin
 			@users = User.all
+		else
+			redirect_to '/public/422.html', status: 422
 		end
 	end
 
@@ -79,16 +81,15 @@ class UsersController < ApplicationController
 
 	# view user by id
 	def view
-		if current_user.id != params[:id]
-			if !check_admin
-				return false
-			end
+		@admin = false
+		if check_admin
+			@admin = true
 		end
 
 		begin
-		@user = User.find_by(id: params[:id])
-		rescue RecordNotFound
-			redirect to '/public/404.html', status: 404
+			@user = User.find(params[:id])
+		rescue ActiveRecord::RecordNotFound
+			redirect_to '/public/404.html', status: 404
 		end
 		
 	end
@@ -98,7 +99,7 @@ class UsersController < ApplicationController
 			user = current_user
 
 			if !current_user.admin?
-				redirect_to '/public/422.html', status: 422
+				return false
 			end
 
 			return user
