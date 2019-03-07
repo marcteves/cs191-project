@@ -40,53 +40,17 @@
      </head>
      
      <body>
+          <%= render 'layouts/header' %>
           <div class = "ui container">
-               <div class = "ui borderless fixed large menu" style = "background:#921517">
-                    <div class="ui container">
-                         <div class="header item" style="color:#FFFFFF">Iskolivery</div>
-                              <div class="header item">
-                                   <%= link_to "Your Requests", my_requests_path, method:
-                                   :get, style: 'color: #FFFFFF' %>
-                              </div>
-
-                              <div class="header item">
-                                   <%= link_to "View Users", users_path, method:
-                                   :get, style: 'color: #FFFFFF' %>
-                              </div>
-                 
-                              <!--
-                         <div class="ui simple dropdown item">
-                              <a style="color:#FFFFFF">Your Requests</a> 
-                              <i class="dropdown icon" style="color:#FFFFFF"></i>
-                              <div class="menu">
-                                   <a class="item" href="#">Link Item</a>
-                                          <div class = "ui button test">Yo</div>
-                                   <a class="item form">Link Item</a>
-                              </div>
-                         </div>
-                              -->
-                    </div>
-               
-                    <div class="right menu">
-                            <%= link_to "Sign out", logout_path, method: :delete, style: 'color:#FFFFFF' %>
-                    </div>
-               </div>
-
                <br><br>
                <h1>User Accounts</h1>          
                
-               <div class = "container">
-                    <div class = "ui modal">
-                         <i class="close icon"></i>
-                         <div class = "header">Header</div>
-                         <div class = "content">Hello</div>
-                    </div>
-               </div>
 
-               <table class="ui compact celled definition table">
+               <table class="ui sortable striped compact table">
                     <thead>
                     <tr>
-                         <th>Email</th>
+                         <th class="sorted ascending">Email</th>
+                         <th class="">Verified</th>
                     </tr>
                     </thead>
                  
@@ -94,6 +58,7 @@
 				 <% @users.each do |user| %>
                      <tr>
                          <td><%= user.email %></td>
+                         <td><%= user.admin %></td> 
                      </tr>
                      <% end %>
                     </tbody>
