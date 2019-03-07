@@ -49,16 +49,25 @@
                <table class="ui sortable striped compact table">
                     <thead>
                     <tr>
+                         <th class="sorted ascending">Name</th>
                          <th class="sorted ascending">Email</th>
                          <th class="">Verified</th>
+                         <th class="">Verify</th>
                     </tr>
                     </thead>
                  
                     <tbody>
 				 <% @users.each do |user| %>
                      <tr>
+                         <td><%= user.name %></td>
                          <td><%= user.email %></td>
-                         <td><%= user.admin %></td> 
+                         <td><%= user.verified %></td>
+                         <td> <%= form_tag verify_path do -%>
+                               <%= hidden_field_tag :request_id, request.request_id %>
+                                   <%= submit_tag 'Verify' %>
+                         <% end -%>
+                         </td>
+                         <!-- replace with the boolean variable for verified accounts -->
                      </tr>
                      <% end %>
                     </tbody>
