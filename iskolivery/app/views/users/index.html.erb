@@ -46,13 +46,13 @@
                <h1>User Accounts</h1>          
                
 
-               <table class="ui sortable striped compact table">
+               <table class="ui striped compact table">
                     <thead>
                     <tr>
-                         <th class="sorted ascending">Name</th>
-                         <th class="sorted ascending">Email</th>
+                         <th class="">Name</th>
+                         <th class="">Email</th>
                          <th class="">Verified</th>
-                         <th class="">Verify</th>
+                         <th class="">Action</th>
                     </tr>
                     </thead>
                  
@@ -63,11 +63,12 @@
                          <td><%= user.email %></td>
                          <td><%= user.verified %></td>
                          <td> <%= form_tag verify_path do -%>
-                               <%= hidden_field_tag :request_id, request.request_id %>
-                                   <%= submit_tag 'Verify' %>
+                               <%= hidden_field_tag :user_id, user.id %>
+                                   <%#= submit_tag 'Verify' %>
+
+                                   <button class="ui mini toggle button" type="submit">Verify</button>
                          <% end -%>
                          </td>
-                         <!-- replace with the boolean variable for verified accounts -->
                      </tr>
                      <% end %>
                     </tbody>
