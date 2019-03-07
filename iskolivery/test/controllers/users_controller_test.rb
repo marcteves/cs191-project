@@ -42,7 +42,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		post login_path, params: { session: { email: admin_user.email,
 											 password: 'password' } }
 
-		get "/users/#{regular_user.id}"
+		get user_view_path(regular_user.id)
 		assert_response :success
 	end
 
@@ -53,9 +53,20 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		post login_path, params: { session: { email: regular_user_A.email,
 											 password: 'password' } }
 
-		get "/users/#{regular_user_B.id}"
+		get user_view_path(regular_user_B.id)
 		assert_response :success
 	end
+
+	test "admin view non-existent user" do
+		admin_user = users(:two)
+
+		post login_path, params: { session: { email: admin_user.email,
+											 password: 'password' } }
+
+		get user_view_path(1)
+		assert_response :missing
+	end
+
 
 
 end
