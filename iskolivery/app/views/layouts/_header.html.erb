@@ -1,0 +1,43 @@
+<!-- LICENSE -->
+<!-- This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019. -->
+<!-- Author: Bridget Legaspi -->
+
+
+<!-- CODE HISTORY -->
+<!-- Created on March 7 to clean code -->
+
+<!-- INFORMATION -->
+<!-- File creation: March 7, 2019 -->
+<!-- Development group: Group 1 - Iskolivery -->
+<!-- Client group: None -->
+<!-- Purpose of the software: To create a crowdsourced courier service for the UP Community -->
+
+<div class = "ui borderless fixed large menu" style = "background:#921517">
+	<div class="ui container">
+			<div class="header item" style="color:#FFFFFF">
+				<%= link_to "Iskolivery", home_path, method: :get, style: 'color: #FFFFFF' %>
+			</div>
+			<div class="header item">
+				<%= link_to "Your Requests", my_requests_path, method:
+				:get, style: 'color: #FFFFFF' %>
+			</div>
+
+                  <div class="header item">
+				<%= link_to "View Users", users_path, method:
+				:get, style: 'color: #FFFFFF' %>
+			</div>
+  
+<!-- 				<div class="ui simple dropdown item">
+			<a style="color:#FFFFFF">Your Requests</a> 
+			<i class="dropdown icon" style="color:#FFFFFF"></i>
+			<div class="menu">
+				<a class="item" href="#">Link Item</a>
+					  <div class = "ui button test">Yo</div>
+				<a class="item form">Link Item</a>
+			</div>
+		</div> -->
+		    <div class="right aligned header item"><i class="sign out inverted alternate icon"></i>
+                <%= link_to "Sign out", logout_path, method: :delete, style: 'color:#FFFFFF' %>
+            </div>
+	</div>
+</div>

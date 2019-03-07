@@ -16,23 +16,24 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	<div class="content">
 		<div class="header">
 			<a href="#"><%= request.requester.email %></a>
-			<div class = "right floated meta" style="color:#44CC44">
-				<%= request.request.bounty %>
+			<div class = "right floated meta" style="color:#009900">
+				P<%= request.request.bounty %>
 			</div>
 		</div>
 		<div class="description">
-			<p><%= request.request.item_name %></p>
-			<p><%= request.request.location.name %></p>
+			<p><strong>Location: </strong><%= request.request.location.name %></p>
+			<p><strong>Description: </strong><%= request.request.item_name %></p>
 		</div>
 	</div>
-	<div class="ui segment">
-		<div class="ui tiny right floated inverted green button">
+	<!-- <div class="ui segment"> -->
+		<!-- <div class="ui tiny right floated inverted green button"> -->
 			<%= form_tag accept_path do -%>
 			<%= hidden_field_tag :request_id, request.request_id %>
-			<%= submit_tag 'Accept' %>
+			<%#= submit_tag 'Accept' %>
+			<button class="fluid ui mini primary button" type="submit">Accept</button>
 			<% end -%>
-		</div>
-	</div>
+		<!-- </div> -->
+	<!-- </div> -->
 </div>
 
 <!--
@@ -47,4 +48,3 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	<% end -%>
 	</td>
 </tr>
--->

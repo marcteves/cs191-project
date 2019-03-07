@@ -3,7 +3,7 @@
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 -->
-<!-- Author: Bridgette Legaspi-->
+<!-- Author: Bridget Legaspi-->
 
 <!-- CODE HISTORY -->
 
@@ -40,20 +40,21 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	</head>
 
 	<body>
-		<div class = "ui borderless fixed large menu" style = "background:#921517">
+		<%= render 'layouts/header' %>
+<!-- 		<div class = "ui borderless fixed large menu" style = "background:#921517">
 			<div class="ui container">
 				<div class="header item" style="color:#FFFFFF">Iskolivery</div>
 					<div class="header item">
-						<%= link_to "Your Requests", my_requests_path, method:
+						<%#= link_to "Your Requests", my_requests_path, method:
 						:get, style: 'color: #FFFFFF' %>
 					</div>
 
                           <div class="header item">
-						<%= link_to "View Users", users_path, method:
+						<%#= link_to "View Users", users_path, method:
 						:get, style: 'color: #FFFFFF' %>
 					</div>
 		  
-<!-- 				<div class="ui simple dropdown item">
+				<div class="ui simple dropdown item">
 					<a style="color:#FFFFFF">Your Requests</a> 
 					<i class="dropdown icon" style="color:#FFFFFF"></i>
 					<div class="menu">
@@ -61,13 +62,12 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 							  <div class = "ui button test">Yo</div>
 						<a class="item form">Link Item</a>
 					</div>
-				</div> -->
+				</div>
+				    <div class="right aligned header item">
+                        <%#= link_to "Sign out", logout_path, method: :delete, style: 'color:#FFFFFF' %>
+                    </div>
 			</div>
-		
-			<div class="right menu">
-				   <%= link_to "Sign out", logout_path, method: :delete, style: 'color:#FFFFFF' %>
-			</div>
-		</div>
+		</div> -->
 		  
 		<br><br><br>
 		
@@ -125,7 +125,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 									<th>Action</th>
 								</tr>
 							</thead>
-						
+							
 							<tbody>-->
 								<% @available_requests.each do |request| %>
 								   <%= render partial: 'request', object: request %>
