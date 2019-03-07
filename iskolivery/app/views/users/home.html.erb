@@ -54,8 +54,10 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 						<div class="ui card">
 							<div class="content">
 								<img class="ui avatar bordered circular image" src="images/yukataw.png" style="width:50px;height:50px;">
+								<i class="floated edit link icon"><%= link_to 'Edit', user_view_edit_path(@user)%></i>
 								<span>
-									<h2 style="margin-bottom:0px"><%= @user.email %></h2>
+									<h2 style="margin-bottom:0px"><%= @user.name %></h2>
+									
 									<div class="meta">
 									College of Engineering
 								    </div>

@@ -6,11 +6,66 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 <!-- Author: Marc Teves-->
 
 <!-- CODE HISTORY -->
+<!-- Modified by Bridget Legaspi on March 8. Added view for updating -->
 
 <!-- INFORMATION -->
 <!-- File creation: February 5, 2019 -->
 <!-- Development group: Group 1 - Iskolivery -->
 <!-- Client group: None -->
 <!-- Purpose of the software: To create a crowdsourced courier service for the UP Community -->
-<h1>Users#view</h1>
-<p>Find me in app/views/users/view.html.erb</p>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset= "utf-8">
+		<title>Edit</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+	
+		<style type="text/css">
+			body {
+				background-color: #F6F6F6;
+			}
+			.ui.menu .item img.logo {
+				margin-right: 1.5em;
+			}
+			.main.container {
+				margin-top: 3em;
+			}
+			.wireframe {
+				margin-top: 2em;
+			}
+			.ui.footer.segment {
+				margin: 5em 0em 0em;
+				padding: 5em 0em;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<%#= stylesheet_link_tag "main" %> 
+
+		<%= render 'layouts/header' %>
+
+		<div class = "ui middle centered aligned container">
+        <br><br><br><br><br>
+			<%= form_for(:user, url: users_edit_path, html: {class: 'ui form'}) do |f| %>
+			    <div class="field">
+				  <%= f.label :name, text='Name' %>
+				  <%= f.text_field :name, user: {name: 'Enter name'} %>
+			    </div>
+			    <div class="field">
+					<%= f.label :email, text='Username or UP Mail' %>
+					<%= f.email_field :email, html: {placeholder: 'Enter username'} %>
+			    </div>
+			    <div class = "ui centered aligned container">
+			        	<center>
+			        	<%=link_to 'Back', home_path, {class: "ui button"} %>
+			        	<button class="ui positive button" type="submit">Save</button>
+			        	</center>
+			  	</div>
+			<% end %>
+		</div>
+
+</body>
+</html>
