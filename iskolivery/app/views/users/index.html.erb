@@ -18,10 +18,18 @@
           <meta charset= "utf-8">
           <title>Accepted Requests</title>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-     
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.min.css">
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.min.js"></script>
+          
           <style type="text/css">
                body {
                     background-color: #F6F6F6;
+               }
+               td:hover {
+                    cursor: pointer;
                }
                .ui.menu .item img.logo {
                     margin-right: 1.5em;
@@ -59,16 +67,7 @@
                     <tbody>
 				 <% @users.each do |user| %>
                      <tr>
-                         <td><%= user.name %></td>
-                         <td><%= user.email %></td>
-                         <td><%= user.verified %></td>
-                         <td> <%= form_tag verify_path do -%>
-                               <%= hidden_field_tag :user_id, user.id %>
-                                   <%#= submit_tag 'Verify' %>
 
-                                   <button class="ui mini toggle button" type="submit">Verify</button>
-                         <% end -%>
-                         </td>
                      </tr>
                      <% end %>
                     </tbody>
@@ -89,8 +88,26 @@
                     </tfoot>
                     -->
                </table>
+               <div class = "ui modal" id="viewUserModal">
+                    <i class="close icon"></i>
+                    <div class="header" style = "background-color:#921517">
+                         <h2 style = "color:#FFFFFF">View User</h2>
+                    </div>
+                    <div class="content">
+                         <h3>Email:</h3>
+                         <p id = "email"></p>
+                    </div>
+               </div>
 
-               <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+               <script>
+               $(document).ready(function(){
+                    $('.viewUserRow').click(function(){
+                         var user = $(this).html();
+                         document.getElementById("email").innerHTML = user;
+                         $('#viewUserModal').modal('show');    
+                    });
+               });
+               </script>
           </div>
      </body>
 </html>
