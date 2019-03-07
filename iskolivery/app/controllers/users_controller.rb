@@ -77,6 +77,22 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# view user by id
+	def view
+		if current_user.id != params[:id]
+			if !check_admin
+				return false
+			end
+		end
+
+		begin
+		@user = User.find_by(id: params[:id])
+		rescue RecordNotFound
+			redirect to '/public/404.html', status: 404
+		end
+		
+	end
+
 	private
 		def check_admin
 			user = current_user
