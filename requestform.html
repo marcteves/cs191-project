@@ -263,10 +263,10 @@
                    		</thead>
                  
                     	<tbody>
-                     		<tr>
-                         		<td class = "hey">testemail</td>
-                         		<td class = "hey">testemail2</td>
-                         		<td class = "hey">testemail3</td>
+                     		<tr class = "hey">
+                         		<td class = "1">testemail</td>
+                         		<td class = "2">testemail2</td>
+                         		<td class = "3">testemail3</td>
                      		</tr>
                     </tbody>
                      
@@ -284,9 +284,9 @@
 				<h3>Organizer:</h3>
 				<p id ="MyEdit">UP Economics Society</p>
 				<h3>Date:</h3>
-				<p>Fevrier 14, 2019, Jeudi</p>
+				<p id = "MyEdit2">Fevrier 14, 2019, Jeudi</p>
 				<h3>Description:</h3>
-				<p>A UP Fair event starring Franco, Rivermaya, and Imago!</p>
+				<p id = "MyEdit3">A UP Fair event starring Franco, Rivermaya, and Imago!</p>
 			</div>
 			<div class="actions">
 				<button class="ui green approve button" id = "rootsbuy">
@@ -298,12 +298,51 @@
 			</div>
 		</div>
 		<script>
-			$(document).ready(function(){
+			/*$(document).ready(function(){
 		    	$('.hey').click(function(){
 		    		var user = $(this).html();
+		    		//alert(user);
+		    		var test = $(this).innerHTML().
+		    		alert(test);
 					document.getElementById("MyEdit").innerHTML = user;
+
+					var row="";
+					for (var j = 0; j < table.rows[i].cells.length; j++) {
+ 		                row += table.rows[i].cells[j].innerHTML;
+		                row += " | ";
+		            }
+		            alert(row);
 		        	$('#rootsmodal').modal('show');    
 		    	});
+		    });*/
+	
+			$(document).ready(function(){
+				var tbl = document.getElementById("userTable");
+		        if (tbl != null) {
+		            alert(tbl.rows[1].innerHTML);
+		            for (var i = 1; i < tbl.rows.length; i++) {
+		            	tbl.rows[i].onClick = function () {getrow(this)};            	
+		            }
+		        }
+
+		        function getrow(index) {
+		        	alert("click" + index);
+		        	var tbl = document.getElementById("userTable");
+		        	var user = "";
+		        	if (tbl != null) {
+		                for (var j = 0; j < tbl.rows[index].cells.length; j++)
+		                    user = $(this).html();
+		                    if (j==0)
+		                    	document.getElementById("MyEdit").innerHTML = user;
+		                    else if(j==1)
+		                    	document.getElementById("MyEdit2").innerHTML = user;
+		                    else if(j==2)
+		                    	document.getElementById("MyEdit3").innerHTML = user;
+			        }
+
+		            alert(row.innerHTML);
+		            $('#rootsmodal').modal('show');  
+		        }
 		    });
 
 		    $('test').each(function(){
@@ -312,7 +351,7 @@
 			    this.id = this.id+user;
 			  }
 			});
-
+testemail2	
 		    $('#userTable').each(function() {
 			    var cellText = $(this).html();
 			    cellText.print();  
