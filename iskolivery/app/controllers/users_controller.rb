@@ -110,6 +110,8 @@ class UsersController < ApplicationController
 			target_user[key] = value
 		end
 		target_user.save
+
+		redirect_to home_path
 	end
 
 	private
