@@ -78,6 +78,7 @@ class UsersController < ApplicationController
 		if user = check_admin
 			target_user = User.find_by(id: params[:user_id])
 			target_user.toggle!(:verified)
+			redirect_back fallback_location: '/home'
 		end
 	end
 
@@ -110,6 +111,8 @@ class UsersController < ApplicationController
 			target_user[key] = value
 		end
 		target_user.save
+
+		redirect_to home_path
 	end
 
 	private
