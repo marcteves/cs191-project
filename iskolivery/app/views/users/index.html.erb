@@ -66,8 +66,10 @@
                  
                     <tbody>
 				 <% @users.each do |user| %>
-                         <td class = "viewUserRow"><%= user.name %></td>
-                         <td class = "viewUserRow"><%= user.email %></td>
+                         <tr>
+                         <tr class = "viewUserRow">
+                         <td class = ""><%= user.name %></td>
+                         <td class = ""><%= user.email %></td>
                          <td class = ""><%= user.verified %></td>
                          <td class = ""><%= form_tag verify_path do -%>
                                <%= hidden_field_tag :user_id, user.id %>
@@ -76,11 +78,9 @@
                                    <button class="ui mini toggle button" type="submit">Verify</button>
                          <% end -%>
                          </td>
+                         </tr>
                          <!-- <td class = "viewUserRow"><%= user.email %></td> -->
                          <!-- <td><%= user.admin %></td>  -->
-                     <tr>
-
-                     </tr>
                      <% end %>
                     </tbody>
                      
@@ -106,7 +106,7 @@
                          <h2 style = "color:#FFFFFF">User Account Details</h2>
                     </div>
                     <div class="content">
-                         <h3>Email:</h3>
+                         <h3>Details:</h3>
                          <p id = "email"></p>
                     </div>
                </div>
@@ -116,6 +116,7 @@
                     $('.viewUserRow').click(function(){
                          var user = $(this).html();
                          document.getElementById("email").innerHTML = user;
+                         alert(user);
                          $('#viewUserModal').modal('show');    
                     });
                });
