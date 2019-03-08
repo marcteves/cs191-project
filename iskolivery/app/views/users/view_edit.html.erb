@@ -45,10 +45,11 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 
 		<%#= stylesheet_link_tag "main" %> 
 
-		<%= render 'layouts/header' %>
+		<%= render 'layouts/header' %> 
 
 		<div class = "ui middle centered aligned container">
         <br><br><br><br><br>
+        <h1>Updating User Account</h1> 
 			<%= form_for(:user, url: user_edit_path(@user.id), method: :patch, html: {class: 'ui form'}) do |f| %>
 			    <div class="field">
 				  <%= f.label :name, text='Name' %>
