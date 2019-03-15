@@ -61,6 +61,7 @@
                          <th class="">Email</th>
                          <th class="">Verified</th>
                          <th class="">Action</th>
+                         <th class="">Disable</th>
                     </tr>
                     </thead>
                  
@@ -73,9 +74,12 @@
                          <td class = ""><%= user.verified %></td>
                          <td class = ""><%= form_tag verify_path do -%>
                                <%= hidden_field_tag :user_id, user.id %>
-                                   <%#= submit_tag 'Verify' %>
-
                                    <button class="ui mini toggle button" type="submit">Verify</button>
+                         <% end -%>
+                         </td>
+                         <td class = ""><%= form_tag verify_path do -%>
+                               <%= hidden_field_tag :user_id, user.id %>
+                                   <button class="ui mini toggle button" type="submit">Disable</button>
                          <% end -%>
                          </td>
                          </tr>
