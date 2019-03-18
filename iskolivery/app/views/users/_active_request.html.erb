@@ -1,0 +1,30 @@
+<!-- LICENSE -->
+<!--This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019
+
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+-->
+<!-- Author: Aleksei Fernandez-->
+
+<!-- CODE HISTORY -->
+
+<!-- INFORMATION -->
+<!-- File creation: March 18, 2019 -->
+<!-- Development group: Group 1 - Iskolivery -->
+<!-- Client group: None -->
+<!-- Purpose of the software: To create a crowdsourced courier service for the UP Community -->
+
+<div class="ui card">
+	<div class="content">
+		<div class="description">
+			<p><strong>Location: </strong><%= request.request.location.name %></p>
+			<p style:"margin-bottom:-10px"><strong>Description: </strong><%= request.request.item_name %></p>
+		</div>
+<!-- 		<button class="ui right floated mini inverted red button">
+ -->			<%= form_tag cancel_path do -%>
+			<%= hidden_field_tag :request_id, request.request_id %>
+			<%#= submit_tag 'Cancel' %>
+			<button class="ui mini right floated negative button" type="submit">Cancel</button>
+			<% end -%>	
+		<!-- </button> -->
+	</div>
+</div>
