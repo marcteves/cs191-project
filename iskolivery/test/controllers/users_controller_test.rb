@@ -19,7 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 			post login_path, params: { session: { email: admin_user.email,
 												 password: 'password' } }
 			post verify_path, params: { user_id: unverified_user.id }
-			assert_response :success
+			assert_response :redirect
 
 		end
 
@@ -87,7 +87,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 			from: 'One', to: 'Juan Dela Cruz' do
 			patch user_edit_path(regular_user.id),
 				params: { user: { name: "Juan Dela Cruz" } }
-			assert_response :success
+			assert_response :redirect
 		end
 
 	end
@@ -104,8 +104,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		assert_changes 'User.find_by(id: regular_user.id).enabled',
 			from: true, to: false do
 			patch user_edit_path(regular_user.id),
-				params: { user: { enabled: "1" } }
-			assert_response :success
+				params: { user: { enabled: false } }
+			assert_response :redirect
 		end
 	end
 
@@ -122,7 +122,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		assert_changes 'User.find_by(id: disabled_user.id).enabled',
 			from: false, to: true do
 			patch user_disable_path(disabled_user.id)
-			assert_response :success
+			assert_response :redirect
 		end
 	end
 
