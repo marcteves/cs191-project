@@ -121,7 +121,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
 		assert_changes 'User.find_by(id: disabled_user.id).enabled',
 			from: false, to: true do
-			post disable_path(disabled_user.id)
+			patch user_disable_path(disabled_user.id)
 			assert_response :success
 		end
 	end
