@@ -82,6 +82,15 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# toggle enabled status of user
+	def disable
+		if user = check_admin
+			target_user = User.find_by(id: params[:id])
+			target_user.toggle!(:enabled)
+			redirect_back fallback_location: '/home'
+		end
+	end
+
 	# view user by id
 	def view
 		request_user(params[:id])
