@@ -67,7 +67,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		assert_response :missing
 	end
 
-	test "user edit self" do
+	test "user view edit page" do
 		regular_user = users(:regular_user)
 
 		post login_path, params: { session: { email: regular_user.email,
@@ -75,6 +75,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
 		get user_view_edit_path(regular_user.id)
 		assert_response :success
+	end
+
+	test "user edit self" do
+		regular_user = users(:regular_user)
+
+		post login_path, params: { session: { email: regular_user.email,
+											 password: 'password' } }
 
 		assert_changes 'User.find_by(id: regular_user.id).name',
 			from: 'One', to: 'Juan Dela Cruz' do
@@ -85,15 +92,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
 	end
 
+
+
 	# user disables self via the existing user_edit path
 	test "user disable self" do
 		regular_user = users(:regular_user)
 
 		post login_path, params: { session: { email: regular_user.email,
 											 password: 'password' } }
-
-		get user_view_edit_path(regular_user.id)
-		assert_response :success
 
 		assert_changes 'User.find_by(id: regular_user.id).enabled',
 			from: true, to: false do
