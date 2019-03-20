@@ -152,6 +152,6 @@ class UsersController < ApplicationController
 		end
 
 		def request_params
-			params.require(:user).permit(:name)
+			params.require(:user).permit(:name, :enabled)
 		end
 end
