@@ -101,7 +101,6 @@ class UsersController < ApplicationController
 	def edit
 		request_user(params[:id])
 		target_user = @user
-		logger.info @user
 		if current_user.id != target_user.id && @admin == false
 			redirect_to '/public/422.html', status: 422
 			return false
