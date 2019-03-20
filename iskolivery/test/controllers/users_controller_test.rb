@@ -9,7 +9,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		assert_response :success
 	end
 
-	test "admin verify toggle user" do 
+	test "admin verify toggle user" do
 		admin_user = users(:admin_user)
 		unverified_user = users(:unverified_user)
 
@@ -83,6 +83,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 			assert_response :success
 		end
 
+	end
+
+	# user edits
+	test "user disable self" do
 	end
 
 end
