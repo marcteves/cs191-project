@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
 	def setup
-		@user = users(:one)
+		@user = users(:regular_user)
 	end
   test "root should route to login page" do
     get root_path

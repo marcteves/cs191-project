@@ -84,7 +84,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 											 password: 'password' } }
 
 		assert_changes 'User.find_by(id: regular_user.id).name',
-			from: 'One', to: 'Juan Dela Cruz' do
+			from: 'Regular', to: 'Juan Dela Cruz' do
 			patch user_edit_path(regular_user.id),
 				params: { user: { name: "Juan Dela Cruz" } }
 			assert_response :redirect
