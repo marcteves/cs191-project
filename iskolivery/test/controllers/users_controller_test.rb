@@ -85,8 +85,40 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
 	end
 
-	# user edits
+	# user disables self via the existing user_edit path
 	test "user disable self" do
+		regular_user = users(:regular_user)
+
+		post login_path, params: { session: { email: regular_user.email,
+											 password: 'password' } }
+
+		get user_view_edit_path(regular_user.id)
+		assert_response :success
+
+		assert_changes 'User.find_by(id: regular_user.id).enabled',
+			from: true, to: false do
+			patch user_edit_path(regular_user.id),
+				params: { user: { enabled: "1" } }
+			assert_response :success
+		end
 	end
+
+	# admin disables user via disable path
+	# NOTE: database is reset for every test, so for this test
+	# forget what happened in "user disable self"
+	test "admin enable disabled user" do
+		admin_user = users(:admin_user)
+		disabled_user = users(:disabled_user)
+
+		post login_path, params: { session: { email: admin_user.email,
+											 password: 'password' } }
+
+		assert_changes 'User.find_by(id: disabled_user.id).enabled',
+			from: false, to: true do
+			post disable_path(disabled_user.id)
+			assert_response :success
+		end
+	end
+
 
 end
