@@ -59,8 +59,8 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 					<%= f.email_field :email, html: {placeholder: 'Enter username'} %>
 			    </div>
 			    <div class="ui toggle checkbox">
-				  <input type="checkbox" name="public">
-				  <label>Disable Account</label>
+				  <%= f.check_box :enabled %>
+				  <label>Disabled</label>
 				</div>	    
 			    <div class = "ui centered aligned container">
 			        	<center>
