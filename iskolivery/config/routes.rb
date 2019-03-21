@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post		'/verify',		    to: 'users#verify' # toggle verify status
   get		  '/user/:id/edit',	to:	'users#view_edit', as: 'user_view_edit' # view form for editing
   patch		'/user/:id',	    to: 'users#edit', as: 'user_edit' # edit user with params
+  patch		'/user/:id/disable',	    to: 'users#disable', as: 'user_disable' # disable a user
 
 
   resources :requests
