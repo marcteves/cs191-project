@@ -1,21 +1,21 @@
 # LICENSE
-# This is a course requirement for CS 192 Software Engineering II under the 
-# supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer 
-# Science, College of Engineering, University of the Philippines, Diliman for 
+# This is a course requirement for CS 192 Software Engineering II under the
+# supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer
+# Science, College of Engineering, University of the Philippines, Diliman for
 # the AY 2018-2019
-# 
-# This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 
+#
+# This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
 # International License.
-# 
+#
 # Author: Marc Teves
-# 
+#
 # CODE HISTORY
-# 
+#
 # INFORMATION
 # File creation: February 5, 2019
 # Development group: Group 1 - Iskolivery
 # Client group: None
-# Purpose of the software: To create a crowdsourced courier service for 
+# Purpose of the software: To create a crowdsourced courier service for
 # the UP Community
 class UsersController < ApplicationController
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 	# render User homepage
 	def home
 		@user = current_user
-		
+
 		@new_request = Request.new
 
 		# get all requests not posted by and not accepted by user
@@ -82,6 +82,15 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# toggle enabled status of user
+	def disable
+		if user = check_admin
+			target_user = User.find_by(id: params[:id])
+			target_user.toggle!(:enabled)
+			redirect_back fallback_location: '/home'
+		end
+	end
+
 	# view user by id
 	def view
 		request_user(params[:id])
@@ -101,7 +110,6 @@ class UsersController < ApplicationController
 	def edit
 		request_user(params[:id])
 		target_user = @user
-		logger.info @user
 		if current_user.id != target_user.id && @admin == false
 			redirect_to '/public/422.html', status: 422
 			return false
@@ -144,6 +152,6 @@ class UsersController < ApplicationController
 		end
 
 		def request_params
-			params.require(:user).permit(:name)
+			params.require(:user).permit(:name, :enabled)
 		end
 end

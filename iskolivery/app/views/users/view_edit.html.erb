@@ -46,7 +46,6 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		<%#= stylesheet_link_tag "main" %> 
 
 		<%= render 'layouts/header' %> 
-
 		<div class = "ui middle centered aligned container">
         <br><br><br><br><br>
         <h1>Updating User Account</h1> 
@@ -59,6 +58,10 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 					<%= f.label :email, text='Username or UP Mail' %>
 					<%= f.email_field :email, html: {placeholder: 'Enter username'} %>
 			    </div>
+			    <div class="ui toggle checkbox">
+				  <%= f.check_box :enabled %>
+				  <label>Disabled</label>
+				</div>	    
 			    <div class = "ui centered aligned container">
 			        	<center>
 			        	<%=link_to 'Back', home_path, {class: "ui button"} %>

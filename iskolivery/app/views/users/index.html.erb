@@ -60,6 +60,7 @@
                          <th class="">Name</th>
                          <th class="">Email</th>
                          <th class="">Verified</th>
+                         <th class="">Disabled</th>
                          <th class="">Action</th>
                     </tr>
                     </thead>
@@ -71,11 +72,15 @@
                          <td class = ""><%= user.name %></td>
                          <td class = ""><%= user.email %></td>
                          <td class = ""><%= user.verified %></td>
+                         <td class = ""><%= user.enabled %></td>
                          <td class = ""><%= form_tag verify_path do -%>
                                <%= hidden_field_tag :user_id, user.id %>
-                                   <%#= submit_tag 'Verify' %>
-
                                    <button class="ui mini toggle button" type="submit">Verify</button>
+                         <% end -%>
+                         <br>
+                         <%= form_tag user_disable_path(user.id), method: :patch do -%>
+                               <%= hidden_field_tag :user_id, user.id %>
+                                   <button class="ui mini toggle button" type="submit">Disable</button>
                          <% end -%>
                          </td>
                          </tr>
