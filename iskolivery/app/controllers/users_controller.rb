@@ -41,6 +41,11 @@ class UsersController < ApplicationController
 			.where.not(requester_id: @user.id)
 
 		@accepted_requests = @user.accepteds
+
+		# active requests are the requests posted by user
+		# which have status pending or accepted (< 2)
+		@active_requests = Assignment.where(requester_id: @user.id)
+			.where('request_status_id < 2')
 	end
 
 	# render accepted requests page
@@ -59,6 +64,7 @@ class UsersController < ApplicationController
 
 		assignment = Assignment.find_by(request_id: params[:request_id])
 		user.accepteds << assignment
+		assignment.update(request_status_id: 1) # status: accepted
 
 		redirect_back fallback_location: '/home'
 	end
@@ -69,6 +75,7 @@ class UsersController < ApplicationController
 
 		assignment = Assignment.find_by(request_id: params[:request_id])
 		user.accepteds.delete(assignment)
+		assignment.update(request_status_id: 3) # status: cancelled
 
 		redirect_back fallback_location: '/home'
 	end
