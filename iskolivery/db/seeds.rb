@@ -38,6 +38,11 @@ Location.create(name: 'Melchor Hall')
 Location.create(name: 'Engineering Library 2')
 Location.create(name: 'College of Science Library')
 
+RequestStatus.create(description: 'pending accept')
+RequestStatus.create(description: 'accepted')
+RequestStatus.create(description: 'fulfilled')
+RequestStatus.create(description: 'cancelled')
+
 default_pass = 'password'
 
 userA_email = 'testA@test.com'
