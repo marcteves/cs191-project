@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190320132558) do
+ActiveRecord::Schema.define(version: 20190328120830) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "requester_id"
@@ -18,11 +18,19 @@ ActiveRecord::Schema.define(version: 20190320132558) do
     t.integer "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "request_status_id"
     t.index ["request_id"], name: "index_assignments_on_request_id"
+    t.index ["request_status_id"], name: "index_assignments_on_request_status_id"
   end
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "request_statuses", force: :cascade do |t|
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
