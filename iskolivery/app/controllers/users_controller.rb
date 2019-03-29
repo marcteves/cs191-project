@@ -43,9 +43,14 @@ class UsersController < ApplicationController
 		@accepted_requests = @user.accepteds
 
 		# active requests are the requests posted by user
-		# which have status pending or accepted (< 2)
+		# which have status accepted (1)
 		@active_requests = Assignment.where(requester_id: @user.id)
-			.where('request_status_id < 2')
+			.where('request_status_id = 1')
+
+		# pending requests are requests posted by user
+		# which have status pending (0)
+		@pending_requests = Assignment.where(requester_id: @user.id)
+			.where('request_status_id = 0')
 	end
 
 	# render accepted requests page
