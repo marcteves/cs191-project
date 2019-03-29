@@ -65,6 +65,12 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 								<hr>                
 								<div class="segment">
 									<h4>Your Active Requests</h4>
+									<% @active_requests.each do |request| %>
+									   <%= render partial: 'active_accepted_request', object: request, as: 'request' %>
+									<% end %>
+									<% @pending_requests.each do |request| %>
+									   <%= render partial: 'active_pending_request', object: request, as: 'request' %>
+									<% end %>
 								</div>
 							</div>
 							
