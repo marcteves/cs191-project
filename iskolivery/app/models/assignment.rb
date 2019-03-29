@@ -25,13 +25,7 @@ class Assignment < ApplicationRecord
 		optional: true # since we can choose not to include this
 
 	belongs_to :request
-	belongs_to :request_status
+	belongs_to :request_status,
+		default: -> { RequestStatus.find_by(description: 'pending accept') }
 
-	before_validation do
-		self.request_status_id = 0 if request_status_id.nil?
-	end
-
-	# fulfiller can be null at creation time
-	validates :requester_id, presence: true
-	validates :request_status_id, presence: true
 end
