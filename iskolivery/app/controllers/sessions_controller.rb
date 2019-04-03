@@ -1,21 +1,21 @@
 # LICENSE
-# This is a course requirement for CS 192 Software Engineering II under the 
-# supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer 
-# Science, College of Engineering, University of the Philippines, Diliman for 
+# This is a course requirement for CS 192 Software Engineering II under the
+# supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer
+# Science, College of Engineering, University of the Philippines, Diliman for
 # the AY 2018-2019
-# 
-# This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 
+#
+# This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
 # International License.
-# 
+#
 # Author: Marc Teves
-# 
+#
 # CODE HISTORY
-# 
+#
 # INFORMATION
 # File creation: February 5, 2019
 # Development group: Group 1 - Iskolivery
 # Client group: None
-# Purpose of the software: To create a crowdsourced courier service for 
+# Purpose of the software: To create a crowdsourced courier service for
 # the UP Community
 class SessionsController < ApplicationController
   def new
@@ -32,8 +32,11 @@ class SessionsController < ApplicationController
 		  log_in user # find this in SessionsHelper
 		  redirect_to '/home'
 	  else
-		  # Invalid info
-		  # TODO: create error
+		  if !Rails.configuration.email_regex.match(user_params[:email])
+			  flash.now[:error] = "Invalid email field (must end with '@up.edu.ph'."
+		  else
+			  flash.now[:error] = "Invalid credentials."
+		  end
 		  render 'new'
 	  end
   end
