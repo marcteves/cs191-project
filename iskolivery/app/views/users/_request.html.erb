@@ -15,9 +15,12 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 <div class="ui card fluid">
 	<div class="content">
 		<div class="header">
-			<a href="#"><%= request.requester.email %></a>
 			<div class = "right floated meta" style="color:#009900">
 				P<%= request.request.bounty %>
+			</div>
+			<a href="#"><%= request.requester.email %></a>
+			<div class = "meta" style="color:#F9DC5C">
+				P<%= request.requester.rating %>/5.0
 			</div>
 		</div>
 		<div class="description">
