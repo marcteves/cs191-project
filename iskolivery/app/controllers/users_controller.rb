@@ -65,23 +65,23 @@ class UsersController < ApplicationController
 
 	# accept a selected request in the homepage
 	def accept_request
-		user = current_user
+		if user = check_enabled
 
-		assignment = Assignment.find_by(request_id: params[:request_id])
-		user.accepteds << assignment
-		assignment.update(request_status_id: 1) # status: accepted
-
+			assignment = Assignment.find_by(request_id: params[:request_id])
+			user.accepteds << assignment
+			assignment.update(request_status_id: 1) # status: accepted
+		end
 		redirect_back fallback_location: '/home'
 	end
 
 	# cancel selected request in the my accepted requests page
 	def cancel_request
-		user = current_user
+		if user = check_enabled
 
-		assignment = Assignment.find_by(request_id: params[:request_id])
-		user.accepteds.delete(assignment)
-		assignment.update(request_status_id: 3) # status: cancelled
-
+			assignment = Assignment.find_by(request_id: params[:request_id])
+			user.accepteds.delete(assignment)
+			assignment.update(request_status_id: 3) # status: cancelled
+		end
 		redirect_back fallback_location: '/home'
 	end
 
@@ -99,8 +99,8 @@ class UsersController < ApplicationController
 		if user = check_admin
 			target_user = User.find_by(id: params[:id])
 			target_user.toggle!(:enabled)
-			redirect_back fallback_location: '/home'
 		end
+		redirect_back fallback_location: '/home'
 	end
 
 	# view user by id
@@ -140,6 +140,16 @@ class UsersController < ApplicationController
 			user = current_user
 
 			if !current_user.admin?
+				return false
+			end
+
+			return user
+		end
+
+		def check_enabled
+			user = current_user
+			if !current_user.enabled?
+				flash[:error] = "Operation not allowed for disabled users."
 				return false
 			end
 
