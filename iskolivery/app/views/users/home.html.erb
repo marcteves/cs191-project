@@ -57,8 +57,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 								<i class="floated edit link icon"><%= link_to 'Edit', user_view_edit_path(@user)%></i>
 								<span>
 									<h2 style="margin-bottom:0px"><%= @user.name %></h2>
-									<div class = "right floated meta" style="color:#921517">
-										<%= @user.rating %>/5.0
+									<div class = "ui star rating" id = "userrating" data-max-rating="5">
 									</div>
 									<div class="meta">
 										College of Engineering
@@ -188,6 +187,16 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				</div>
 			</div>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+			<script>
+				$(document).ready(function(){
+				    // All your normal JS code goes in here
+				    $(".rating").rating();
+				});
+				$(document).ready(function(){
+					var rate = <%= @user.rating %>;
+			    	$('#userrating').rating('set rating', rate);
+			    });
+		    </script>
 		</div> 
 	</body>
 </html>
