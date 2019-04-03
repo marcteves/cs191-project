@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190328120830) do
+ActiveRecord::Schema.define(version: 20190403055058) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "requester_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20190328120830) do
     t.boolean "verified", default: false, null: false
     t.string "name"
     t.boolean "enabled", default: true, null: false
+    t.float "rating"
   end
 
 end
