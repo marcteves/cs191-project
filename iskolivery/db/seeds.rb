@@ -45,8 +45,8 @@ RequestStatus.create(description: 'cancelled')
 
 default_pass = 'password'
 
-userA_email = 'testA@test.com'
-userB_email = 'testB@test.com'
+userA_email = 'testA@up.edu.ph'
+userB_email = 'testB@up.edu.ph'
 
 userA = User.create(name: 'Tess Isko', email: userA_email, password:
 					default_pass, password_confirmation: default_pass)
