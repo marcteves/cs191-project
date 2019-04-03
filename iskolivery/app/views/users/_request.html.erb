@@ -19,9 +19,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				P<%= request.request.bounty %>
 			</div>
 			<a href="#"><%= request.requester.email %></a>
-			<div class = "meta" style="color:#F9DC5C">
-				P<%= request.requester.rating %>/5.0
-			</div>
+			<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
 		</div>
 		<div class="description">
 			<p><strong>Location: </strong><%= request.request.location.name %></p>
@@ -38,6 +36,18 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		<!-- </div> -->
 	<!-- </div> -->
 </div>
+
+<script>
+	$(document).ready(function(){
+	    // All your normal JS code goes in here
+	    $(".rating").rating();
+	});
+	$(document).ready(function(){
+		var rate = <%= @user.rating %>;
+    	$('#userratereq').rating('set rating', rate);
+    	$('#userratereq').rating('disable');
+    });
+</script>
 
 <!--fluid ui mini primary button
 <tr>

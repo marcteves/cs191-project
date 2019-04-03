@@ -195,6 +195,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				$(document).ready(function(){
 					var rate = <%= @user.rating %>;
 			    	$('#userrating').rating('set rating', rate);
+			    	$('#userrating').rating('disable');
 			    });
 		    </script>
 		</div> 
