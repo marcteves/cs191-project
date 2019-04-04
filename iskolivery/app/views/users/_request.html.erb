@@ -19,6 +19,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				P<%= request.request.bounty %>
 			</div>
 			<a href="#"><%= request.requester.email %></a>
+			<p id="reqrate"><%= @user.rating %></p>
 			<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
 		</div>
 		<div class="description">
@@ -43,7 +44,9 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	    $(".rating").rating();
 	});
 	$(document).ready(function(){
-		var rate = <%= @request.requester.rating %>;
+		var x = document.getElementById("reqrate");
+		x.style.display = "none";
+		var rate = parseInt(x);
     	$('#userratereq').rating('set rating', rate);
     	$('#userratereq').rating('disable');
     });
