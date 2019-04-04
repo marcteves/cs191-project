@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190403055058) do
+ActiveRecord::Schema.define(version: 20190404123515) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "requester_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20190403055058) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "request_status_id"
+    t.float "requester_rating"
+    t.float "fulfiller_rating"
     t.index ["request_id"], name: "index_assignments_on_request_id"
     t.index ["request_status_id"], name: "index_assignments_on_request_status_id"
   end
