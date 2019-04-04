@@ -43,7 +43,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	    $(".rating").rating();
 	});
 	$(document).ready(function(){
-		var rate = <%= @user.rating %>;
+		var rate = <%= @request.requester.rating %>;
     	$('#userratereq').rating('set rating', rate);
     	$('#userratereq').rating('disable');
     });

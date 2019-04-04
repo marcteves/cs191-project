@@ -70,6 +70,7 @@
 									<div class = "right floated meta" style="color:#921517">
 										4.5/5.0
 									</div>
+									<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
 									<div class="meta">
 								    	College of Engineering
 								    </div>
@@ -356,7 +357,12 @@
 		        	$('#rootsmodal').modal('show');    
 		    	});
 		    });*/
-	
+			$(document).ready(function(){
+			    // All your normal JS code goes in here
+			    $(".rating").rating();
+			});
+
+
 			$(document).ready(function(){
 				var tbl = document.getElementById("userTable");
 		        if (tbl != null) {

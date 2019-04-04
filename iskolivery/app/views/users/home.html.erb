@@ -57,11 +57,12 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 								<i class="floated edit link icon"><%= link_to 'Edit', user_view_edit_path(@user)%></i>
 								<span>
 									<h2 style="margin-bottom:0px"><%= @user.name %></h2>
-									<div class = "ui star rating" id = "userrating" data-max-rating="5">
 									</div>
 									<div class="meta">
 										College of Engineering
 								    </div>
+								    <p id="rate"><%= @user.rating %></p>
+								    <div class = "ui star rating" id = "userrating" data-max-rating="5">
 								</span>        
 								<hr>                
 								<div class="segment">
@@ -193,7 +194,10 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				    $(".rating").rating();
 				});
 				$(document).ready(function(){
-					var rate = <%= @user.rating %>;
+
+					var x = document.getElementById("rate");
+					x.style.display = "none";
+					var rate = parseInt(x);
 			    	$('#userrating').rating('set rating', rate);
 			    	$('#userrating').rating('disable');
 			    });
