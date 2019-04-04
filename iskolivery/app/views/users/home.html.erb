@@ -192,12 +192,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				    // All your normal JS code goes in here
 				    $(".rating").rating();
 				});
-				$(document).ready(function(){
-					var rate = <%= @user.rating %>;
-			    	$('#userrating').rating('set rating', rate);
-			    	$('#userrating').rating('disable');
-			    });
-		    </script>
-		</div> 
+			</script>
+		</div>
 	</body>
 </html>
