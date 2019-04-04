@@ -28,4 +28,8 @@ class Assignment < ApplicationRecord
 	belongs_to :request_status,
 		default: -> { RequestStatus.find_by(description: 'pending accept') }
 
+	# use these default values to track if one party hasn't rated yet
+	attribute :fulfiller_rating, default: -1
+	attribute :requester_rating, default: -1
+
 end
