@@ -19,7 +19,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				P<%= request.request.bounty %>
 			</div>
 			<a href="#"><%= request.requester.email %></a>
-			<p id="reqrate"><%= @user.rating %></p>
+			<p id="reqrate"><%= request.requester.rating %></p>
 			<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
 		</div>
 		<div class="description">
