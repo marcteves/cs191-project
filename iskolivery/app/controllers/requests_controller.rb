@@ -41,14 +41,25 @@ class RequestsController < ApplicationController
 	  assignment = Request.find(params[:id]).assignment
 
 	  if user == assignment.fulfiller
-		  assignment.requester_rating = params[:rating]
+		  assignment.update(requester_rating: params[:rating])
 	  else
-		  assignment.fulfiller_rating = params[:rating]
+		  assignment.update(fulfiller_rating: params[:rating])
 	  end
 
 	  # a rating of < 0 means the request hasn't been rated yet
 	  if assignment.requester_rating > 0 && assignment.fulfiller_rating > 0
-		  assignment.status = RequestStatus.find_by(description: 'fulfilled')
+		  assignment.request_status =
+			  RequestStatus.find_by(description: 'fulfilled')
+
+		  new_requester_rating = assignment.requester.rating
+							+ assignment.requester_rating
+							* Rails.configuration.new_rating_weight
+		  assignment.requester.update(rating: new_requester_rating)
+
+		  new_fulfiller_rating = assignment.fulfiller.rating
+							+ assignment.fulfiller_rating
+							* Rails.configuration.new_rating_weight
+		  assignment.fulfiller.update(rating: new_fulfiller_rating)
 	  end
   end
 
