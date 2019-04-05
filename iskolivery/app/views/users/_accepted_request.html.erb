@@ -35,9 +35,33 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<%#= submit_tag 'Cancel' %>
 			<button class="ui mini right floated negative button" type="submit">Cancel</button>
 			<% end -%>	
+			<button class="ui mini right floated positive button" id="markdonereq">Mark as done</button>
 		<!-- </button> -->
 	</div>
 </div>
+
+<div class = "ui modal" id="donemodalreq">
+	<i class="close icon"></i>
+	<div class="header" style = "background-color:#921517">
+		<h2>Rate Requester</h2>
+	</div>
+	<div class="content">
+		<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
+	</div>
+	<div class="actions">
+		<button class="ui green approve button" id = "submitrate">
+			Submit
+		</button>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$('#markdonereq').click(function(){
+	    	$('#donemodalreq').modal('show');    
+		});
+	});
+</script>
 
 <!--
 <tr>
