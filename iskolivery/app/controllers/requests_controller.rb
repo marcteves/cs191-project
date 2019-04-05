@@ -47,7 +47,7 @@ class RequestsController < ApplicationController
 	  end
 
 	  # a rating of < 0 means the request hasn't been rated yet
-	  if assignment.requester_rating > 0 && assignment.fulfiller_rating > 0
+	  if assignment.requester_rating.to_f > 0 && assignment.fulfiller_rating.to_f > 0
 		  assignment.request_status = RequestStatus.find_by(description: 'fulfilled')
 
 		  new_requester_rating = assignment.requester.rating + assignment.requester_rating * Rails.configuration.new_rating_weight
