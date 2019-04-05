@@ -21,27 +21,37 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			</div>
 			<p><strong>Location: </strong><%= request.request.location.name %></p>
 			<p style:"margin-bottom:-10px"><strong>Description: </strong><%= request.request.item_name %></p>
+			<br>
 		</div>
 			<%= form_tag cancel_path do -%>
 			<%= hidden_field_tag :request_id, request.request_id %>
 			<button class="ui mini right floated negative button" type="submit">Cancel</button>
 			<% end -%>	
-			<button class="ui mini right floated positive button" id="markdonefullfiller">Mark as done</button>
+
+				<button class="ui mini right floated positive button" id="markdonefullfiller">Confirm</button>
+
 	</div>
 </div>
 
-<div class = "ui modal" id="donemodal">
+<div class = "ui tiny modal" id="donemodal">
 	<i class="close icon"></i>
 	<div class="header" style = "background-color:#921517">
-		<h2>Rate Fulfiller</h2>
+		<h2 style = "color:#FFFFFF">Rate Fulfiller</h2>
 	</div>
 	<div class="content">
-		<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
+		<strong><%= request.fulfiller.name %>: </strong>
+		<div class = "ui star rating" id = "userrating" data-max-rating="5"></div>
 	</div>
 	<div class="actions">
+
+		<%= form_tag request_fulfill_path(request.request_id), method: :patch do -%>
+            	<%= hidden_field_tag :rating, 1 %>
+
 		<button class="ui green approve button" id = "submitrate">
 			Submit
 		</button>
+
+		<% end -%>
 	</div>
 </div>
 
@@ -50,5 +60,13 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		$('#markdonefullfiller').click(function(){
 	    	$('#donemodal').modal('show');    
 		});
+
+		$('#submitrate').click(function(){
+			var rating = $('#userrating').rating('get rating');
+			$('#rating').value = rating;
+		});
+
 	});
+
+
 </script>

@@ -29,23 +29,25 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<p><strong>Location: </strong><%= request.request.location.name %></p>
 			<p style:"margin-bottom:-10px"><strong>Description: </strong><%= request.request.item_name %></p>
 		</div>
+		<br>
 <!-- 		<button class="ui right floated mini inverted red button">
  -->			<%= form_tag cancel_path do -%>
 			<%= hidden_field_tag :request_id, request.request_id %>
 			<%#= submit_tag 'Cancel' %>
 			<button class="ui mini right floated negative button" type="submit">Cancel</button>
-			<% end -%>	
-			<button class="ui mini right floated positive button" id="markdonereq">Mark as done</button>
+			<% end -%>
+			<button class="ui mini right floated positive button" id="markdonereq">Done</button>
 		<!-- </button> -->
 	</div>
 </div>
 
-<div class = "ui modal" id="donemodalreq">
+<div class = "ui tiny modal" id="donemodalreq">
 	<i class="close icon"></i>
 	<div class="header" style = "background-color:#921517">
-		<h2>Rate Requester</h2>
+		<h2 style = "color:#FFFFFF">Rate Requester</h2>
 	</div>
 	<div class="content">
+		<strong><%= request.requester.name %>: </strong>		
 		<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
 	</div>
 	<div class="actions">
