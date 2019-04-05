@@ -51,14 +51,10 @@ class RequestsController < ApplicationController
 		  assignment.request_status =
 			  RequestStatus.find_by(description: 'fulfilled')
 
-		  new_requester_rating = assignment.requester.rating
-							+ assignment.requester_rating
-							* Rails.configuration.new_rating_weight
+		  new_requester_rating = assignment.requester.rating + assignment.requester_rating * Rails.configuration.new_rating_weight
 		  assignment.requester.update(rating: new_requester_rating)
 
-		  new_fulfiller_rating = assignment.fulfiller.rating
-							+ assignment.fulfiller_rating
-							* Rails.configuration.new_rating_weight
+		  new_fulfiller_rating = assignment.fulfiller.rating + assignment.fulfiller_rating * Rails.configuration.new_rating_weight
 		  assignment.fulfiller.update(rating: new_fulfiller_rating)
 	  end
   end
