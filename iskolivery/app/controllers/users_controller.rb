@@ -44,13 +44,16 @@ class UsersController < ApplicationController
 
 		# active requests are the requests posted by user
 		# which have status accepted (1)
+		#
+		active_status = RequestStatus.find_by(description: "accepted").id
 		@active_requests = Assignment.where(requester_id: @user.id)
-			.where('request_status_id = 1')
+			.where(request_status_id: active_status)
 
 		# pending requests are requests posted by user
 		# which have status pending (0)
+		pending_status = RequestStatus.find_by(description: "pending accept").id
 		@pending_requests = Assignment.where(requester_id: @user.id)
-			.where('request_status_id = 0')
+			.where(request_status_id: pending_status)
 	end
 
 	# render accepted requests page
@@ -69,7 +72,8 @@ class UsersController < ApplicationController
 
 		assignment = Assignment.find_by(request_id: params[:request_id])
 		user.accepteds << assignment
-		assignment.update(request_status_id: 1) # status: accepted
+		accepted_status = RequestStatus.find_by(description: "accepted").id
+		assignment.update(request_status_id: accepted_status) # status: accepted
 
 		redirect_back fallback_location: '/home'
 	end
@@ -80,7 +84,8 @@ class UsersController < ApplicationController
 
 		assignment = Assignment.find_by(request_id: params[:request_id])
 		user.accepteds.delete(assignment)
-		assignment.update(request_status_id: 3) # status: cancelled
+		cancelled_status = RequestStatus.find_by(description: "cancelled").id
+		assignment.update(request_status_id: cancelled_status) # status: cancelled
 
 		redirect_back fallback_location: '/home'
 	end
