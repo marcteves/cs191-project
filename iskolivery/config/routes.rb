@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get		  '/user/:id/edit',	to:	'users#view_edit', as: 'user_view_edit' # view form for editing
   patch		'/user/:id',	    to: 'users#edit', as: 'user_edit' # edit user with params
   patch		'/user/:id/disable',	    to: 'users#disable', as: 'user_disable' # disable a user
-  patch		'request/:id/fulfill',	to: 'request#fulfill', as: 'request_fulfill'
+  patch		'request/:id/fulfill',	to: 'requests#fulfill', as: 'request_fulfill'
 
 
   resources :requests
