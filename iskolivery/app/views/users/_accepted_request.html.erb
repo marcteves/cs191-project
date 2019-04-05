@@ -51,9 +51,16 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
 	</div>
 	<div class="actions">
-		<button class="ui green approve button" id = "submitrate">
+
+		<%= form_tag request_fulfill_path(request.request_id), method: :patch do -%>
+            	<%= hidden_field_tag :rating, 1 %>
+
+		<button class="ui green approve button" id = "submitratereq">
 			Submit
 		</button>
+
+		<% end -%>
+
 	</div>
 </div>
 
@@ -62,6 +69,11 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		$('#markdonereq').click(function(){
 	    	$('#donemodalreq').modal('show');    
 		});
+
+		$('#submitratereq').click(function(){
+			var rating = $('#userrating').rating('get rating');
+			$('#rating').value = rating;
+		});		
 	});
 </script>
 
