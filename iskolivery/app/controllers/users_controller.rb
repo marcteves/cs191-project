@@ -51,8 +51,7 @@ class UsersController < ApplicationController
 
 		# pending requests are requests posted by user
 		# which have status pending (0)
-		@pending_requests = Assignment.where(requester_id: @user.id)
-			.where(request_status_id: pending_status.id)
+		@pending_requests = pending_status.assignments.where(requester_id: @user.id)
 	end
 
 	# render accepted requests page
