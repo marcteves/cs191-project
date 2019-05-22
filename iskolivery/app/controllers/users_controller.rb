@@ -40,14 +40,14 @@ class UsersController < ApplicationController
 			.or(Assignment.where.not(fulfiller_id: @user.id))
 			.where.not(requester_id: @user.id)
 
-		@accepted_requests = @user.accepteds
+		accepted_status = RequestStatus.find_by(description: "accepted")
+		@accepted_requests = accepted_status.assignments.where(fulfiller_id: @user.id)
 
 		# active requests are the requests posted by user
 		# which have status accepted (1)
 		#
-		active_status = RequestStatus.find_by(description: "accepted").id
 		@active_requests = Assignment.where(requester_id: @user.id)
-			.where(request_status_id: active_status)
+			.where(request_status_id: accepted_status.id)
 
 		# pending requests are requests posted by user
 		# which have status pending (0)
