@@ -40,14 +40,14 @@ class UsersController < ApplicationController
 		# keep in mind null values
 		@available_requests = pending_status.assignments
 
-		@accepted_requests = @user.accepteds
+		accepted_status = RequestStatus.find_by(description: "accepted")
+		@accepted_requests = accepted_status.assignments.where(fulfiller_id: @user.id)
 
 		# active requests are the requests posted by user
 		# which have status accepted (1)
 		#
-		active_status = RequestStatus.find_by(description: "accepted").id
 		@active_requests = Assignment.where(requester_id: @user.id)
-			.where(request_status_id: active_status)
+			.where(request_status_id: accepted_status.id)
 
 		# pending requests are requests posted by user
 		# which have status pending (0)
@@ -70,8 +70,8 @@ class UsersController < ApplicationController
 
 		assignment = Assignment.find_by(request_id: params[:request_id])
 		user.accepteds << assignment
-		accepted_status = RequestStatus.find_by(description: "accepted").id
-		assignment.update(request_status_id: accepted_status) # status: accepted
+		accepted_status = RequestStatus.find_by(description: "accepted")
+		accepted_status.assignments << assignment
 
 		redirect_back fallback_location: '/home'
 	end
@@ -82,8 +82,8 @@ class UsersController < ApplicationController
 
 		assignment = Assignment.find_by(request_id: params[:request_id])
 		user.accepteds.delete(assignment)
-		cancelled_status = RequestStatus.find_by(description: "cancelled").id
-		assignment.update(request_status_id: cancelled_status) # status: cancelled
+		cancelled_status = RequestStatus.find_by(description: "cancelled")
+		cancelled_status.assignments << assignment
 
 		redirect_back fallback_location: '/home'
 	end
