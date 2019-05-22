@@ -34,11 +34,11 @@ class UsersController < ApplicationController
 
 		@new_request = Request.new
 
+		pending_status = RequestStatus.find_by(description: "pending accept")
+
 		# get all requests not posted by and not accepted by user
 		# keep in mind null values
-		@available_requests = Assignment.where(fulfiller_id: nil)
-			.or(Assignment.where.not(fulfiller_id: @user.id))
-			.where.not(requester_id: @user.id)
+		@available_requests = pending_status.assignments
 
 		@accepted_requests = @user.accepteds
 
@@ -51,9 +51,8 @@ class UsersController < ApplicationController
 
 		# pending requests are requests posted by user
 		# which have status pending (0)
-		pending_status = RequestStatus.find_by(description: "pending accept").id
 		@pending_requests = Assignment.where(requester_id: @user.id)
-			.where(request_status_id: pending_status)
+			.where(request_status_id: pending_status.id)
 	end
 
 	# render accepted requests page
