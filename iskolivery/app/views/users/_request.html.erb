@@ -18,23 +18,29 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<div class = "right floated meta" style="color:#009900">
 				P<%= request.request.bounty %>
 			</div>
-			<a href="#"><%= request.requester.email %></a>
+			<a href="#"><%= request.requester.name %></a>
 			<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
 		</div>
 		<div class="description">
 			<p><strong>Location: </strong><%= request.request.location.name %></p>
 			<p><strong>Description: </strong><%= request.request.item_name %></p>
 		</div>
-	</div>
-	<!-- <div class="ui segment"> -->
-		<!-- <div class="ui tiny right floated inverted green button"> -->
+
 			<%= form_tag accept_path do -%>
 			<%= hidden_field_tag :request_id, request.request_id %>
 			<%#= submit_tag 'Accept' %>
 				<% if request.requester.id != @user.id %>
-					<button class="ui mini right floated inverted green button" type="submit">Accept</button>
+					<button class="ui mini right floated green button" type="submit">Accept</button>
+				<% end %>
+				<% if request.requester.id == @user.id %>
+					<div class = "right floated meta" style="color:#FFAA25">Pending</div>
 				<% end %>
 			<% end -%>
+
+	</div>
+	<!-- <div class="ui segment"> -->
+		<!-- <div class="ui tiny right floated inverted green button"> -->
+
 		<!-- </div> -->
 	<!-- </div> -->
 </div>
