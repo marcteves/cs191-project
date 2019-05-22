@@ -52,11 +52,11 @@ class RequestsController < ApplicationController
 		  fulfilled_status.assignments << assignment
 
 		  # new_requester_rating = assignment.requester.rating + assignment.requester_rating * Rails.configuration.new_rating_weight
-		  new_requester_rating = assignment.requester.rating.to_f + assignment.requester_rating.to_f * 0.05
+		  new_requester_rating = (assignment.requester.rating.to_f * 0.90) + (assignment.requester_rating.to_f * 0.10)
 		  assignment.requester.update(rating: new_requester_rating)
 
 		  # new_fulfiller_rating = assignment.fulfiller.rating + assignment.fulfiller_rating * Rails.configuration.new_rating_weight
-		  new_fulfiller_rating = assignment.fulfiller.rating.to_f + assignment.fulfiller_rating.to_f * 0.05	  
+		  new_fulfiller_rating = (assignment.fulfiller.rating.to_f * 0.90) + (assignment.fulfiller_rating.to_f * 0.05)
 		  assignment.fulfiller.update(rating: new_fulfiller_rating)
 	  end
 
