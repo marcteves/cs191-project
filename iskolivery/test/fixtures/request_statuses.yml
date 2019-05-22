@@ -1,0 +1,11 @@
+pending_accept:
+    description: 'pending accept'
+
+accepted:
+    description: 'accepted'
+
+fulfilled:
+    description: 'fulfilled'
+
+cancelled:
+    description: 'cancelled'
