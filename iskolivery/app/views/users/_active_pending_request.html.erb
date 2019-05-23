@@ -17,7 +17,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	<div class="content">
 		<div class="header">
 			<div class = "right floated meta" style="color:#FFAA25">
-				Pending
+				<h5>Pending</h5>
 			</div>
 			<span>
 					<h3 style="margin-bottom:0px">
@@ -27,8 +27,9 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		</div>
 
 		<div class="description">
-			<p><i class="location arrow icon"></i><%= request.request.location.name %></p>
+
 			<p><i class="ruble sign icon"></i><%= request.request.bounty %></p></strong>
+			<p><i class="location arrow icon"></i><%= request.request.location.name %></p>			
 			<p style:"margin-bottom:-10px"><strong>Description: </strong><%= request.request.item_name %></p>
 			<%= form_tag cancel_path do -%>
 			<%= hidden_field_tag :request_id, request.request_id %>

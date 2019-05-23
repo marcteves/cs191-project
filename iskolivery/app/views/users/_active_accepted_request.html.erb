@@ -17,7 +17,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 	<div class="content">
 		<div class="header">
 			<div class = "right floated meta" style="color:#44CC44">
-				Ongoing
+				<h5>Ongoing</h5>
 			</div>
 			<span>
 					<h3 style="margin-bottom:0px">
@@ -26,7 +26,8 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			</span>						
 		</div>
 		<div class="description">
-			<p><i class="location arrow icon"></i><%= request.request.location.name %></p>
+			<p><i class="ruble sign icon"></i><%= request.request.bounty %></p></strong>
+			<p><i class="location arrow icon"></i><%= request.request.location.name %></p>			
 			<p style:"margin-bottom:-10px"><strong>Description: </strong><%= request.request.item_name %></p>
 		
 		<%= form_tag cancel_path do -%>
@@ -50,10 +51,8 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		<div class = "ui star rating" id = "userrating" data-max-rating="5"></div>
 	</div>
 	<div class="actions">
-
 		<%= form_tag request_fulfill_path(request.request_id), method: :patch do -%>
             	<%= hidden_field_tag :rating, 1 %>
-
 		<button class="ui green approve button" id = "submitrate">
 			Submit
 		</button>
