@@ -32,7 +32,8 @@ class SessionsController < ApplicationController
 		  log_in user # find this in SessionsHelper
 		  redirect_to '/home'
 	  else
-		  if !Rails.configuration.email_regex.match(user_params[:email])
+		  valid_email_regex = /\A[\w+\-.]+@up\.edu\.ph\z/i
+		  unless valid_email_regex =~ user_params[:email]
 			  flash.now[:error] = "Invalid email field (must end with '@up.edu.ph'."
 		  else
 			  flash.now[:error] = "Invalid credentials."
