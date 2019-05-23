@@ -70,9 +70,9 @@ accepted_status = RequestStatus.find_by(description: "accepted")
 accepted_status.assignments << ass
 
 location = Location.find_by(name: 'Melchor Hall')
-req2 = Request.create(title: 'gutom ako',
+req2 = Request.create(title: 'Gutom Ako',
 				  location_id: location.id,
-				  item_name: 'pabili ng spacanton',
+				  item_name: 'Pabili ng spacanton',
 				  bounty: 20.00)
 
 userB.postings.create(request_id: req2.id)

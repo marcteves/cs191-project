@@ -17,14 +17,16 @@
 			<div class="header item" style="color:#FFFFFF">
 				<%= link_to "Iskolivery", home_path, method: :get, style: 'color: #FFFFFF' %>
 			</div>
-			<div class="header item">
-				<%= link_to "Your Requests", my_requests_path, method:
+<!-- 			<div class="header item">
+				<#%= link_to "Accepted Requests", my_requests_path, method:
 				:get, style: 'color: #FFFFFF' %>
-			</div>
+			</div> -->
 
-            <div class="header item">
-				<%= link_to "View Users", users_path, method: :get, style: 'color: #FFFFFF' %>
-			</div>
+       		<!-- <div class="header item"> -->
+				<%# if @user.check_admin %>
+				<!-- <div class = "right floated meta" style="color:#FFAA25"><%= link_to "View Users", users_path, method: :get, style: 'color: #FFFFFF' %></div> -->
+			<%# end %>
+			<!-- </div> -->
   
 <!-- 				<div class="ui simple dropdown item">
 			<a style="color:#FFFFFF">Your Requests</a> 
