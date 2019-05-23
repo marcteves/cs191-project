@@ -18,12 +18,13 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<div class = "right floated meta" style="color:#009900">
 				P<%= request.request.bounty %>
 			</div>
-			<a href="#"><%= request.requester.name %></a>
-			<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
+			<%= request.request.title %>
+			
 		</div>
 		<div class="description">
-			<p><strong>Location: </strong><%= request.request.location.name %></p>
-			<p><strong>Description: </strong><%= request.request.item_name %></p>
+			<h5><i class="user icon"></i><a href="#"><%= request.requester.name %><div class = "ui star rating" id = "userratereq" data-max-rating="5"></div></a></h5>
+			<p><i class="location arrow icon"></i><%= request.request.location.name %></p>
+			<p><%= request.request.item_name %></p>
 		</div>
 
 			<%= form_tag accept_path do -%>
@@ -38,11 +39,6 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<% end -%>
 
 	</div>
-	<!-- <div class="ui segment"> -->
-		<!-- <div class="ui tiny right floated inverted green button"> -->
-
-		<!-- </div> -->
-	<!-- </div> -->
 </div>
 
 <script>
@@ -56,16 +52,3 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
     	$('#userratereq').rating('disable');
     });
 </script>
-
-<!--fluid ui mini primary button
-<tr>
-	<td class="single line"> <a href="#"><%= request.requester.email %></a></td>
-	<td class="center aligned"><%= request.request.location.name %></td>
-	<td class="center aligned"><%= request.request.bounty %></td>
-	<td><%= request.request.item_name %></td>
-	<td> <%= form_tag accept_path do -%>
-	<%= hidden_field_tag :request_id, request.request_id %>
-	<%= submit_tag 'Accept' %>
-	<% end -%>
-	</td>
-</tr>

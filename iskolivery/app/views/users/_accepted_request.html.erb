@@ -16,18 +16,22 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 <div class="ui card">
 	<div class="content">
 		<div class="header">
-			<img class="ui avatar bordered circular image" src="images/yukataw.png" style="width:25px;height:25px;">
+			<div class = "right floated meta" style="color:#009900">
+				P<%= request.request.bounty %>
+			</div>
+			<!-- <img class="ui avatar bordered circular image" src="images/yukataw.png" style="width:25px;height:25px;"> -->
 			<span>
-				<a href="#" style="color:#000000">
+				<!-- <a href="#" style="color:#000000"> -->
 					<h3 style="margin-bottom:0px">
-						<%= request.requester.email %>
+						<%= request.request.title %>
 					</h3>
-				</a>
+				<!-- </a> -->
 			</span>						
 		</div>
 		<div class="description">
-			<p><strong>Location: </strong><%= request.request.location.name %></p>
-			<p style:"margin-bottom:-10px"><strong>Description: </strong><%= request.request.item_name %></p>
+			<p><i class="user icon"></i><%= request.requester.name %></p>
+			<p><i class="location arrow icon"></i><%= request.request.location.name %></p>
+			<p style:"margin-bottom:-10px"><%= request.request.item_name %></p>
 		</div>
 		<br>
 <!-- 		<button class="ui right floated mini inverted red button">

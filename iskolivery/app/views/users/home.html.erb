@@ -110,10 +110,10 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				<div class="four wide column">
 					<div class = "ui card">
 						<div class = "content">
-							<div class = "header">Request Form</div>
+							<div class = "header"><h2>Requests Form</h2></div>
 							<br>
 							
-								   <%= form_for(@new_request, html: {class: 'ui form'}) do |f| %>
+							<%= form_for(@new_request, html: {class: 'ui form'}) do |f| %>
 							<form class="ui form">
 								<div class="ui required field">
 											<%= f.label :title, text='Title' %>
@@ -133,7 +133,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 
 								<div class="ui field">
 											<%= f.label :item_name, text='Special Instructions' %>
-											<%= f.text_field :item_name %>
+											<%= f.text_area :item_name %>
 								</div>
 								<div class="ui field">
 											<%= f.label :bounty, text='Bounty' %>
