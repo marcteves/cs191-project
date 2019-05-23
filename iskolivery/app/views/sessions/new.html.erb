@@ -23,6 +23,9 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
           <meta charset= "utf-8">
           <title>Iskolivery</title>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.min.css">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
      <style type="text/css">
       body {
         background-color: #921517;
@@ -60,34 +63,90 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		<div class = "ui middle centered aligned container">
 			<h1 class = "ui centered aligned header" style="color:#FFFFFF; margin-bottom:-20px">ISKOLIVERY</h1>
 			<h3 class = "ui centered aligned header" style="color:#FFFFFF"><i>Crowdsourced Courier Service</i></h3>
-			<div class="ui segment">
-				<!--div class="content"-->
-					<center>
-			        <div class = "image">   
-			  			   <img src = "isko.png" style = "width:100px;height:100px">
-			  			</div>
-			        </center>
-					<%= form_for(:session, url: login_path, html: {class: 'ui form'}) do |f| %>
-					    <div class="field">
-							<%= f.label :email, text='Username or UP Mail' %>
-							<%= f.email_field :email, html: {placeholder: 'Enter username'} %>
-					    </div>
-				        <div class="field">
-				  	      <%= f.label :password, text='Password' %>
-						  <%= f.password_field :password, html: {placeholder: 'Enter password'} %>
-				        </div>
-				        <div class = "ui centered aligned container">
-					        	<center>
-					        	<button class="ui positive button" type="submit">Log In</button>
-					        	</center>
-				      	</div>
-				      	<center>
-				      		<a href = "#" style = "color: #000000">Create an account</a>
-				      	</center>
-					<% end %>
-				<!--/div-->
-			</div>
-			
+			<div class="ui top attached tabular menu">
+        <a class="active item" data-tab="login">Log In</a>
+        <a class="item" data-tab="signup">Signup</a>
+      </div>
+      <div class = "ui bottom attached active tab segment" data-tab="login">
+				<center>
+		        <div class = "image">   
+		  			   <img src = "isko.png" style = "width:100px;height:100px">
+		  			</div>
+		    </center>
+				<%= form_for(:session, url: login_path, html: {class: 'ui form'}) do |f| %>
+				    <div class="field">
+						<%= f.label :email, text='Username or UP Mail' %>
+						<%= f.email_field :email, html: {placeholder: 'Enter username'} %>
+				    </div>
+			        <div class="field">
+			  	      <%= f.label :password, text='Password' %>
+					  <%= f.password_field :password, html: {placeholder: 'Enter password'} %>
+			        </div>
+			        <div class = "ui centered aligned container">
+				        	<center>
+				        	<button class="ui positive button" type="submit">Log In</button>
+				        	</center>
+			      	</div>
+              <% if flash[:success] %>
+              <div class="ui green message">
+                <i class="icon check circle"></i>
+                <%= flash[:success] %>
+              </div>
+              <% end %>
+              <% if flash[:error] %>
+              <div class="ui red message">
+                <i class="icon x icon"></i>
+                <%= flash[:error] %>
+              </div>
+              <% end %>
+				<% end %>
+      </div>
+      <div class = "ui bottom attached tab segment" data-tab="signup">
+  			<center>
+            <div class = "image">   
+               <img src = "isko.png" style = "width:100px;height:100px">
+            </div>
+        </center>
+        <%= form_for(:user, url: users_new_path, html: {class: 'ui form'}) do |f| %>
+            <div class="field">
+              <%= f.label :name, text='Username' %>
+              <%= f.text_field :name, html: {placeholder: 'Enter username'} %>
+            </div>
+            <div class="field">
+              <%= f.label :email, text='UP Mail' %>
+              <%= f.email_field :email, html: {placeholder: 'Enter email'} %>
+            </div>
+            <div class="field">
+              <%= f.label :password, text='Password' %>
+              <%= f.password_field :password, html: {placeholder: 'Enter password'} %>
+            </div>
+            <div class="field">
+              <%= f.label :password_confirmation, text='Confirm password' %>
+              <%= f.password_field :password_confirmation, html: {placeholder: 'Confirm password'} %>
+            </div>
+            <div class = "ui centered aligned container">
+                <center>
+                <button class="ui positive button" type="submit">Sign Up</button>
+                </center>
+            </div>
+            <div class="ui bottom attached warning message">
+              <i class="icon help"></i>
+              Already signed up? <a href="#">Login here</a> instead.
+            </div>
+          <% end %>
+      </div>
 		</div>
+    
+    <script>
+      $(document).ready(function(){
+        $('.menu .item').tab();
+
+        $('.ui .item').on('click', function() {
+            Console.Log("fsasfadsfasdf");
+            $('.ui .item').removeClass('active');
+            $(this).addClass('active');
+         });  
+      });
+    </script>
 	</body>
 </html>

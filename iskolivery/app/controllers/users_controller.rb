@@ -140,14 +140,15 @@ class UsersController < ApplicationController
 
 	# Register a new user
 	def create
+		
 		reg_params = params.require(:user).permit(
 			:name, :email, :password, :password_confirmation
 		)
 
-		name = reg_params(:name)
-		email = reg_params(:email)
-		password = reg_params(:password)
-		password_confirmation = reg_params(:password_confirmation)
+		name = reg_params[:name]
+		email = reg_params[:email]
+		password = reg_params[:password]
+		password_confirmation = reg_params[:password_confirmation]
 
 		new_user = User.new(
 			name: name,
