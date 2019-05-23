@@ -34,9 +34,9 @@ class SessionsController < ApplicationController
 	  else
 		  valid_email_regex = /\A[\w+\-.]+@up\.edu\.ph\z/i
 		  unless valid_email_regex =~ user_params[:email]
-			  flash.now[:error] = "Invalid email field (must end with '@up.edu.ph'."
+			  flash.now[:error] = "Invalid email (must end with '@up.edu.ph')"
 		  else
-			  flash.now[:error] = "Invalid credentials."
+			  flash.now[:error] = "Invalid credentials"
 		  end
 		  render 'new'
 	  end
