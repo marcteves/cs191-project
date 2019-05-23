@@ -34,7 +34,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<%= hidden_field_tag :request_id, request.request_id %>
 			<!-- <button class="ui mini right floated negative button" type="submit">Cancel</button> -->
 			<% end -%>	
-			<button class="ui mini right floated positive button" id="markdonefullfiller">Confirm</button>
+			<button class="ui mini right floated positive button" id="markdonefullfiller">Mark Fulfilled</button>
 
 		</div>
 
@@ -47,8 +47,8 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		<h2 style = "color:#FFFFFF">Rate Fulfiller</h2>
 	</div>
 	<div class="content">
-		<strong><%= request.fulfiller.name %>: </strong>
-		<div class = "ui star rating" id = "userrating" data-max-rating="5"></div>
+		<p>How was your experience with <strong><%= request.fulfiller.name %></strong> as a fulfiller?</p>
+		<div class = "ui massive star rating" id = "userrating" data-max-rating="5"></div>
 	</div>
 	<div class="actions">
 		<%= form_tag request_fulfill_path(request.request_id), method: :patch do -%>

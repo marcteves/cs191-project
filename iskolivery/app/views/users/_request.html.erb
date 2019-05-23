@@ -27,10 +27,10 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<%= form_tag accept_path do -%>
 			<%= hidden_field_tag :request_id, request.request_id %>
 				<% if request.requester.id != @user.id %>
-					<button class="ui mini right floated green button" type="submit">Accept</button>
+					<button class="ui mini right floated green button" type="submit">Accept Request</button>
 				<% end %>
 				<% if request.requester.id == @user.id %>
-					<div class = "right floated meta" style="color:#FFAA25"><strong>Pending</strong></div>
+					<div class = "right floated meta" style="color:#FFAA25"><strong>Looking for fulfiller</strong></div>
 				<% end %>
 			<% end -%>
 		</div>
