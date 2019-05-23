@@ -82,8 +82,8 @@ class UsersController < ApplicationController
 
 		assignment = Assignment.find_by(request_id: params[:request_id])
 		user.accepteds.delete(assignment)
-		cancelled_status = RequestStatus.find_by(description: "cancelled")
-		cancelled_status.assignments << assignment
+		pending_status = RequestStatus.find_by(description: "pending accept")
+		pending_status.assignments << assignment
 
 		redirect_back fallback_location: '/home'
 	end
