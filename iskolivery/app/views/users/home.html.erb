@@ -156,6 +156,8 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 				    var rate = <%= @user.rating %>;
 				    $('#userratereq').rating('set rating', Math.floor(rate));
 				    $('#userratereq').rating('disable');
+					$('.userrate').rating('set rating', Math.floor(rate));
+					$('.userrate').rating('disable');
 				});
 			</script>
 		</div> 

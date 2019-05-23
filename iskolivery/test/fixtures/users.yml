@@ -2,23 +2,23 @@
 
 regular_user:
   name: "Regular"
-  email: one@test.com
+  email: one@up.edu.ph
   password_digest: <%= User.digest('password') %>
 
 admin_user:
   name: "Admin"
-  email: two@test.com
+  email: two@up.edu.ph
   admin: true
   password_digest: <%= User.digest('password') %>
 
 unverified_user:
   name: "Unverified"
-  email: three@test.com
+  email: three@up.edu.ph
   verified: false
   password_digest: <%= User.digest('password') %>
 
 disabled_user:
   name: "Disabled"
-  email: three@test.com
+  email: three@up.edu.ph
   enabled: false
   password_digest: <%= User.digest('password') %>

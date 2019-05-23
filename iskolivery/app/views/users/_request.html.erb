@@ -21,30 +21,18 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<%= request.request.title %>
 		</div>
 		<div class="description">
-			<h5><i class="user icon"></i><a href="#"><%= request.requester.name %><div class = "ui star rating" id = "userratereq" data-max-rating="5"></div></a></h5>
+			<h5><i class="user icon"></i><a href="#"><%= request.requester.name %>&nbsp;&nbsp;<div class = "ui mini star rating userrate" id = "userrate" data-max-rating="5"></div></a></h5>
 			<p><i class="location arrow icon"></i><%= request.request.location.name %></p>
 			<p><%= request.request.item_name %></p>
 			<%= form_tag accept_path do -%>
 			<%= hidden_field_tag :request_id, request.request_id %>
 				<% if request.requester.id != @user.id %>
-					<button class="ui mini right floated green button" type="submit">Accept</button>
+					<button class="ui mini right floated green button" type="submit">Accept Request</button>
 				<% end %>
 				<% if request.requester.id == @user.id %>
-					<div class = "right floated meta" style="color:#FFAA25"><strong>Pending</strong></div>
+					<div class = "right floated meta" style="color:#FFAA25"><strong>Looking for fulfiller</strong></div>
 				<% end %>
 			<% end -%>
 		</div>
 	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-	    // All your normal JS code goes in here
-	    $(".rating").rating();
-	});
-	$(document).ready(function(){
-		var rate = <%= @user.rating %>;
-    	$('#userratereq').rating('set rating', rate);
-    	$('#userratereq').rating('disable');
-    });
-</script>

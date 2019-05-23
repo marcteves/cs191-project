@@ -41,7 +41,7 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 			<%#= submit_tag 'Cancel' %>
 			<button class="ui mini right floated negative button" type="submit">Cancel</button>
 			<% end -%>
-			<button class="ui mini right floated positive button" id="markdonereq">Done</button>
+			<button class="ui mini right floated positive button" id="markdonereq">Mark Done</button>
 		<!-- </button> -->
 	</div>
 </div>
@@ -52,8 +52,8 @@ This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Intern
 		<h2 style = "color:#FFFFFF">Rate Requester</h2>
 	</div>
 	<div class="content">
-		<strong><%= request.requester.name %>: </strong>		
-		<div class = "ui star rating" id = "userratereq" data-max-rating="5"></div>
+		<p>How was your experience with <strong><%= request.requester.name %></strong> as a requester?</p>
+		<div class = "ui massive star rating" id = "userratereq" data-max-rating="5"></div>
 	</div>
 	<div class="actions">
 		<%= form_tag request_fulfill_path(request.request_id), method: :patch do -%>

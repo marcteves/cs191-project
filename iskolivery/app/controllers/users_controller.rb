@@ -138,6 +138,34 @@ class UsersController < ApplicationController
 		redirect_to home_path
 	end
 
+	# Register a new user
+	def create
+		
+		reg_params = params.require(:user).permit(
+			:name, :email, :password, :password_confirmation
+		)
+
+		name = reg_params[:name]
+		email = reg_params[:email]
+		password = reg_params[:password]
+		password_confirmation = reg_params[:password_confirmation]
+
+		new_user = User.new(
+			name: name,
+			email: email,
+			password: password,
+			password_confirmation: password_confirmation
+		)
+
+		if new_user.valid?
+			new_user.save(validate: false)
+			flash[:success] = "Account successfully created."
+		else
+			flash[:error] = new_user.errors.full_messages
+		end
+		redirect_to root_path
+	end
+
 	private
 		def check_admin
 			user = current_user

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   patch		'/user/:id',	    to: 'users#edit', as: 'user_edit' # edit user with params
   patch		'/user/:id/disable',	    to: 'users#disable', as: 'user_disable' # disable a user
   patch		'request/:id/fulfill',	to: 'requests#fulfill', as: 'request_fulfill'
+  post		'/users/new',			to:	'users#create'
 
 
   resources :requests
