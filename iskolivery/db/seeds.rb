@@ -66,6 +66,8 @@ userA.postings.create(request_id: req1.id)
 ass = Assignment.find_by(request_id: req1.id)
 
 userB.accepteds << ass
+accepted_status = RequestStatus.find_by(description: "accepted")
+accepted_status.assignments << ass
 
 location = Location.find_by(name: 'Melchor Hall')
 req2 = Request.create(title: 'gutom ako',
