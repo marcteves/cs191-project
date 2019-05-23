@@ -23,11 +23,10 @@ class RequestsController < ApplicationController
 
   def create
 	  user = current_user
-	  location = Location.find_by(request_params[:location_id])
 
 	  request = Request.create!(
 		  title: request_params[:title],
-		  location_id: location.id,
+		  location_id: request_params[:location_id],
 		  item_name: request_params[:item_name],
 		  bounty: request_params[:bounty]
 	  )
